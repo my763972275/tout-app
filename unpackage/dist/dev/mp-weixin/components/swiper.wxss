@@ -1,0 +1,11 @@
+
+.imageurl.data-v-4a862acc{
+	width:100%;
+	height:300rpx !important;
+}
+.swiper-item.data-v-4a862acc{
+	width:100%;
+	height:300rpx !important;
+	z-index:1000;
+}
+

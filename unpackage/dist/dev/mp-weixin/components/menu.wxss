@@ -1,0 +1,19 @@
+
+.ticket.data-v-1c52e99a{
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:flex;
+	-webkit-justify-content: space-around;
+	        justify-content: space-around;
+	text-align: center;
+	margin:30rpx 0;
+}
+.ticket image.data-v-1c52e99a{
+	width:90rpx;
+	height:90rpx;
+}
+.ticket text.data-v-1c52e99a{
+	font-size: 30rpx;
+	display: block;
+}
+

@@ -3,14 +3,51 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "飞猪旅游"
+			}
+		},
+		{
+			"path": "pages/strategy/strategy",
+			"style": {
+				"navigationBarTitleText": "攻略"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTitleText": "飞猪旅游",
+		"navigationBarBackgroundColor": "#ffd300",
+		"backgroundColor": "#ffd300"
+	},
+	"tabBar": {
+		"color": "#333333",
+		"selectedColor": "#ffd300",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/homeSelected.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/strategy/strategy",
+				"iconPath": "static/strategy.png",
+				"selectedIconPath": "static/strategySelected.png",
+				"text": "攻略"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/my.png",
+				"selectedIconPath": "static/mySelected.png",
+				"text": "我的"
+			}
+		]
 	}
 }

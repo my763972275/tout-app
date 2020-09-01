@@ -1,0 +1,54 @@
+{
+	"id":1,
+	"image":"cloud://travel-pbvky.7472-travel-pbvky-1302868032/banners/bg1.jpg",
+	"title":"普吉岛6天自由行",
+	"list":"全国-普吉岛6天自由行直飞泰国旅游海岛游往返机票（可代订接机）",
+	"label":"游泳豪华酒店",
+	"price":1994,
+	"buy":1000
+}
+{
+	"id":2,
+	"image":"cloud://travel-pbvky.7472-travel-pbvky-1302868032/banners/bg1.jpg",
+	"title":"普吉岛6天自由行",
+	"list":"泰国深度旅游 全国直飞普吉岛自由行 6天4晚 机票+酒店自由组合",
+	"label":"泰国深度旅游",
+	"price":2000,
+	"buy":999
+}
+{
+	"id":3,
+	"image":"cloud://travel-pbvky.7472-travel-pbvky-1302868032/banners/bg1.jpg",
+	"title":"希尔顿泰国旅游",
+	"list":"普吉岛5-6天自由行 芭东新开国五网红消享/索菲特/希尔顿泰国旅游",
+	"label":"索菲特",
+	"price":3000,
+	"buy":5980
+}
+{
+	"id":4,
+	"image":"cloud://travel-pbvky.7472-travel-pbvky-1302868032/banners/bg1.jpg",
+	"title":"普吉岛6天自由行",
+	"list":"全国-普吉岛6天自由行直飞泰国旅游海岛游往返机票（可代订接机）",
+	"label":"游泳豪华酒店",
+	"price":1994,
+	"buy":1000
+}
+{
+	"id":5,
+	"image":"cloud://travel-pbvky.7472-travel-pbvky-1302868032/banners/bg1.jpg",
+	"title":"普吉岛6天自由行",
+	"list":"泰国深度旅游 全国直飞普吉岛自由行 6天4晚 机票+酒店自由组合",
+	"label":"泰国深度旅游",
+	"price":2000,
+	"buy":999
+}
+{
+	"id":6,
+	"image":"cloud://travel-pbvky.7472-travel-pbvky-1302868032/banners/bg1.jpg",
+	"title":"希尔顿泰国旅游",
+	"list":"普吉岛5-6天自由行 芭东新开国五网红消享/索菲特/希尔顿泰国旅游",
+	"label":"索菲特",
+	"price":3000,
+	"buy":5980
+}
