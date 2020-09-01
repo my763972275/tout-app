@@ -1,5 +1,5 @@
 
-.ticket.data-v-1c52e99a{
+.ticket.data-v-5c648b9a{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -8,11 +8,11 @@
 	text-align: center;
 	margin:30rpx 0;
 }
-.ticket image.data-v-1c52e99a{
+.ticket image.data-v-5c648b9a{
 	width:90rpx;
 	height:90rpx;
 }
-.ticket text.data-v-1c52e99a{
+.ticket text.data-v-5c648b9a{
 	font-size: 30rpx;
 	display: block;
 }

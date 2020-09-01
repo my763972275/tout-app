@@ -11,7 +11,7 @@
 			<block v-for="(item, index) in banner" :key="index">
 				<swiper-item>
 					<view class="swiper-item" id="swiper-item" @click="localCont()">
-						<image :src="item.image" mode="aspectFill" class="imageurl animated fadeIn"></image>
+						<image :src="item.image" mode="widthFix" class="imageurl animated fadeIn"></image>
 					</view>
 				</swiper-item>
 			</block>

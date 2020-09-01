@@ -1,5 +1,5 @@
 
-.content.data-v-2d0c77d8{
+.content.data-v-b3742682{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -10,7 +10,7 @@
 	border:1rpx solid #eeeeee;
 	border-radius: 10rpx;
 }
-.content view.data-v-2d0c77d8{
+.content view.data-v-b3742682{
 	width:25%;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
@@ -25,17 +25,17 @@
 	box-sizing: border-box;
 	padding:20rpx 0;
 }
-.content view.data-v-2d0c77d8:nth-child(2){border-left:1rpx solid #eeeeee; border-right:1rpx solid #eeeeee;}
-.content view.data-v-2d0c77d8:nth-child(6){border-left:1rpx solid #eeeeee; border-right:1rpx solid #eeeeee;}
-.content view.data-v-2d0c77d8:nth-child(3){border-right:1rpx solid #eeeeee;}
-.content view.data-v-2d0c77d8:nth-child(7){border-right:1rpx solid #eeeeee;}
-.content view.data-v-2d0c77d8:nth-child(-n+4){border-bottom:1rpx solid #eeeeee;}
-.tick.data-v-2d0c77d8{
+.content view.data-v-b3742682:nth-child(2){border-left:1rpx solid #eeeeee; border-right:1rpx solid #eeeeee;}
+.content view.data-v-b3742682:nth-child(6){border-left:1rpx solid #eeeeee; border-right:1rpx solid #eeeeee;}
+.content view.data-v-b3742682:nth-child(3){border-right:1rpx solid #eeeeee;}
+.content view.data-v-b3742682:nth-child(7){border-right:1rpx solid #eeeeee;}
+.content view.data-v-b3742682:nth-child(-n+4){border-bottom:1rpx solid #eeeeee;}
+.tick.data-v-b3742682{
 	font-size: 30rpx;
 	color:#333333;
 	font-weight: bold;
 }
-.nametext.data-v-2d0c77d8{
+.nametext.data-v-b3742682{
 	font-size: 23rpx;
 	color:#686868;
 }

@@ -21,23 +21,23 @@
 				isFixed:false,
 				menuList:[
 					{
-						"image":'../static/plane.png',
+						"image":'../static/plane.webp',
 						"name":'机票'
 					},
 					{
-						"image":'../static/hotel.png',
+						"image":'../static/hotel.webp',
 						"name":'酒店'
 					},
 					{
-						"image":'../static/train.png',
+						"image":'../static/train.webp',
 						"name":'火车票'
 					},
 					{
-						"image":'../static/bus.png',
+						"image":'../static/bus.webp',
 						"name":'汽车票'
 					},
 					{
-						"image":'../static/ticket.png',
+						"image":'../static/ticket.webp',
 						"name":'门票'
 					}
 				]

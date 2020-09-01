@@ -18,6 +18,7 @@
 </template>
 
 <script>
+	import {homelist} from '../commons/js/cloudFun.js'
 	export default {
 		name:'scrollView',
 		props:{
@@ -26,12 +27,24 @@
 		data() {
 			return {
 				num:0,
-			};
+			}; 
 		},
 		methods:{
 			tabs(index,item){
 				this.num = index;
-				
+				homelist('recomment')
+				.then(res => {
+					// vuex传值
+					console.log(res)
+					let listdata = res;
+					// 当传值给actions时执行下面的命令
+					this.$store.dispatch('listact',listdata)
+					// 如果直接传值给mutations时执行下面的命令
+					// this.$store.commit('listmut',listdata)
+				})
+				.catch(err => {
+					console.log(err)
+				})
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 <template>
 	<view class="active">
 		<view class="content">
-			<block v-for="(item,index) in content" :key="index">
+			<block v-for="(item,index) in recomment" :key="index">
 				<view class="content-article" @click="localCont">
 					<view class="content-img">
 						<image :src="item.image" mode="aspectFill" class="animated fadeIn"></image>
@@ -24,34 +24,12 @@
 
 <script>
 	export default {
+		props:{
+			recomment:Array
+		},
 		data() {
 			return {
-				content:[
-					{
-						image:'../static/bg1.jpg',
-						title:'三亚租车',
-						list:'描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述',
-						label:'法拉利租车',
-						price:80,
-						buy:90
-					},
-					{
-						image:'../static/bg2.jpg',
-						title:'三亚租车',
-						list:'描述描述描述描述描述描述描述描述描述描述描述描述',
-						label:'法拉利租车',
-						price:80,
-						buy:90
-					},
-					{
-						image:'../static/bg3.jpg',
-						title:'三亚租车',
-						list:'描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述',
-						label:'法拉利租车',
-						price:80,
-						buy:90
-					},
-				]
+			
 			};
 		},
 		methods:{

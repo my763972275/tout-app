@@ -5,11 +5,11 @@
 		<!-- 轮播图组件 -->
 		<Swiper :banner = "banner"></Swiper>
 		<Menu></Menu>
-		<Classify :class="{ isFixed: isFixed }" id="boxFixed"></Classify>
+		<Classify></Classify>
 		<!-- 滑动组件 -->
-		<scroll-view style="height:140upx;" :tab="tab"></scroll-view>
+		<scroll-view style="height:140upx;" :tab="tab" id="boxFixed" :class="{ 'isFixed': isFixed }"></scroll-view>
 		<!-- 主内容 -->
-		<content-menu></content-menu>
+		<content-menu :recomment = "recomment"></content-menu>
 	</view>
 </template>
 
@@ -21,7 +21,8 @@ import Classify from '../../components/classify.vue';
 import ScrollView from '../../components/scrollView.vue';
 import ContentMenu from '../../components/content.vue'
 // 引入公用方法
-import {home} from '../../commons/js/cloudFun.js'
+import {home,homelist} from '../../commons/js/cloudFun.js';
+import {mapState} from 'vuex'
 export default {
 	components: {
 		Search,
@@ -37,13 +38,19 @@ export default {
 			rect: '',
 			menuTop: '',
 			banner:[],
-			tab:[]
+			tab:[],
+			recomment:[]
 		};
 	},
 	async created() {
-		this.banner = await home('banner');
-		this.tab = await home('table');
-		
+		Promise.all([home('banner'),home('table'),homelist('recomment')])
+		.then(res => {
+			this.banner = res[0];
+			this.tab = res[1];
+			this.recomment = res[2]
+		}).catch(err => {
+			console.log(err)
+		})
 	},
 	onLoad() {
 		const query = wx.createSelectorQuery();
@@ -56,6 +63,11 @@ export default {
 	// 监听页面滚动
 	onPageScroll(e) {
 		this.rect = e.scrollTop;
+		// if (this.rect > this.menuTop) {
+		// 	this.isFixed = true;
+		// } else {
+		// 	this.isFixed = false;
+		// }
 	},
 	// 计算属性 时刻监听数据的变化，只要数据发生变化，计算数据就会重新执行
 	computed: {
@@ -66,6 +78,12 @@ export default {
 			} else {
 				this.isFixed = false;
 			}
+		},
+		// 取出vuex数据仓库里的数据
+		...mapState(['list']),
+		// 取到tab切换的数据
+		count(){
+			this.recomment = this.list.listing;
 		}
 	}
 };
