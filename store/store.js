@@ -6,9 +6,20 @@ Vue.use(Vuex)
 const list = {
 	listing:[]
 }
+// tab切换的状态
+const load = {
+	loading:false
+}
+const navmin = {
+	loading:false,
+	nav:'',
+	pageid:0
+}
 
 const state = {
-	list
+	list,
+	load,
+	navmin
 }
 
 
@@ -28,6 +39,21 @@ export default new Vuex.Store({
 		listmut(state,listdata){
 			state.list = {
 				listing:listdata
+			}
+		},
+		// tab切换的loading状态
+		loadmuat(state,loading){
+			// console.log(loading)
+			state.load = {
+				loading:loading
+			}
+		},
+		// 以对象形式传过来的参数
+		navmuta(state,obj){
+			state.navmin = {
+				loading:obj.loading,  //loading标志
+				nav:obj.nav,          //集合名
+				pageid:obj.pageid     //分页查询的页码
 			}
 		}
 	}

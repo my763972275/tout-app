@@ -8,8 +8,10 @@
 		<Classify></Classify>
 		<!-- 滑动组件 -->
 		<scroll-view style="height:140upx;" :tab="tab" id="boxFixed" :class="{ 'isFixed': isFixed }"></scroll-view>
+		<!-- tab切换的loading -->
+		<load-list v-if="loading"></load-list>
 		<!-- 主内容 -->
-		<content-menu :recomment = "recomment"></content-menu>
+		<content-menu :recomment = "recomment" v-if="!loading"></content-menu>
 	</view>
 </template>
 
@@ -35,19 +37,22 @@ export default {
 	data() {
 		return {
 			isFixed: false,
+			loading:false,  //tab切换的loading状态
 			rect: '',
 			menuTop: '',
 			banner:[],
 			tab:[],
-			recomment:[]
+			recomment:[],
+			pageId:0,     //上拉加载值
+			nav:''
 		};
 	},
-	async created() {
-		Promise.all([home('banner'),home('table'),homelist('recomment')])
+	created() {
+		Promise.all([home('banner'),home('table'),homelist('recomment',this.pageId)])
 		.then(res => {
 			this.banner = res[0];
 			this.tab = res[1];
-			this.recomment = res[2]
+			this.recomment = res[2];
 		}).catch(err => {
 			console.log(err)
 		})
@@ -63,11 +68,27 @@ export default {
 	// 监听页面滚动
 	onPageScroll(e) {
 		this.rect = e.scrollTop;
-		// if (this.rect > this.menuTop) {
-		// 	this.isFixed = true;
-		// } else {
-		// 	this.isFixed = false;
-		// }
+	},
+	// 触底事件（注：页面生命周期只在父组件中生效，在子组件中是不生效的）
+	onReachBottom() {
+		// console.log('触底')
+		this.pageId++;
+		this.pullon();
+	},
+	methods:{
+		// 上拉加载
+		pullon(){
+			// homelist(this.nav,this.pageId)
+			homelist('recomment',this.pageId)
+			.then(res => {
+				// 将之前得到的数据和上拉加载的数据进行合并
+				// ...展开运算符 [...a,...b] 数据合并
+				this.recomment = [...this.recomment,...res]
+			})
+			.catch(err => {
+				console.log(err)
+			})
+		}
 	},
 	// 计算属性 时刻监听数据的变化，只要数据发生变化，计算数据就会重新执行
 	computed: {
@@ -80,10 +101,20 @@ export default {
 			}
 		},
 		// 取出vuex数据仓库里的数据
-		...mapState(['list']),
+		...mapState(['list','load','navmin']),
 		// 取到tab切换的数据
 		count(){
 			this.recomment = this.list.listing;
+		},
+		// tab 切换的loading状态
+		countload(){
+			this.loading = this.load.loading
+		},
+		// 以对象传过来的值
+		navdata(){
+			this.loading = this.navmin.loading;
+			this.nav = this.navmin.nav;
+			this.pageId = this.navmin.pageid;
 		}
 	}
 };

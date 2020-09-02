@@ -15,9 +15,9 @@ var home = function(coll){
 	})
 }
 // 请求攻略列表的数据
-var homelist = function(listdata){
+var homelist = function(listdata,pageid){
 	return new Promise((resolve,reject) => {
-		const collData = db.collection(listdata).limit(8)
+		const collData = db.collection(listdata).limit(2).skip(pageid * 2)
 		collData.get()
 		.then(res => {
 			resolve(res.data)

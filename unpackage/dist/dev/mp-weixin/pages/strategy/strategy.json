@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "攻略",
-  "usingComponents": {}
+  "usingComponents": {
+    "address": "/pages/strategy/components/address",
+    "content": "/pages/strategy/components/content",
+    "location": "/pages/strategy/components/location"
+  }
 }

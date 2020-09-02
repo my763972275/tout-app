@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/strategy/strategy",
+    "pages/index/index",
     "pages/my/my"
   ],
   "subPackages": [],
@@ -37,6 +37,12 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap19.json"
+  "usingComponents": {
+    "load-list": "/element/loading"
+  },
+  "permission":{
+		"scope.userLocation":{
+			"desc":"你的位置信息将用于小程序位置接口的效果展示"
+		}
+	}
 }

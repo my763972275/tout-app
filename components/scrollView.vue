@@ -32,15 +32,31 @@
 		methods:{
 			tabs(index,item){
 				this.num = index;
-				homelist('recomment')
+				// 点击tab切换loading状态显示
+				let loading = true;
+				// this.$store.commit('navmuat',loading);
+				// tab切换的时候把pageid值置为0
+				let pageid = 0;
+				
+				// 以对象的形式传值到vuex
+				let pullobj = {
+					loading:loading,
+					nav:item,
+					pageid:pageid
+				}
+				this.$store.commit('navmuta',pullobj);
+				// 上拉加载值
+				let listid = 0;
+				homelist('recomment',listid)
 				.then(res => {
 					// vuex传值
-					console.log(res)
 					let listdata = res;
 					// 当传值给actions时执行下面的命令
 					this.$store.dispatch('listact',listdata)
 					// 如果直接传值给mutations时执行下面的命令
 					// this.$store.commit('listmut',listdata)
+					let loading = false;
+					this.$store.commit('loadmuat',loading)
 				})
 				.catch(err => {
 					console.log(err)

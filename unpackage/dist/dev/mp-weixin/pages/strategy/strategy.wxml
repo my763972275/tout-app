@@ -1,1 +1,1 @@
-<view>攻略</view>
+<view class="data-v-5264ae7f"><address vue-id="4e1fb440-1" address="{{addressVal}}" class="data-v-5264ae7f" bind:__l="__l"></address><location vue-id="4e1fb440-2" id="location" class="data-v-5264ae7f" bind:__l="__l"></location><content style="{{('top:'+height+'px')}}" vue-id="4e1fb440-3" class="data-v-5264ae7f" bind:__l="__l"></content><view class="publish data-v-5264ae7f">+</view></view>

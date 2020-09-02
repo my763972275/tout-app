@@ -1,0 +1,44 @@
+
+.loading.data-v-50d00b24{
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:flex;
+	/* align-items: center; */
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	padding:30rpx 0;
+}
+.loader.data-v-50d00b24{
+	display:inline-block;
+	width:40rpx;
+	height:40rpx;
+	color:inherit;
+	border:7rpx solid greenyellow;
+	border-bottom-color:transparent;
+	border-radius:50%;
+	-webkit-animation:loader-data-v-50d00b24 1s linear infinite;
+	        animation:loader-data-v-50d00b24 1s linear infinite;
+}
+/* 360°旋转 */
+@-webkit-keyframes  loader-data-v-50d00b24{
+0%{
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+}
+100%{
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+}
+}
+@keyframes  loader-data-v-50d00b24{
+0%{
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+}
+100%{
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+}
+}
+

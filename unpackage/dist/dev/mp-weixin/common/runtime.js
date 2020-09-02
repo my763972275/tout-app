@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/classify":1,"components/content":1,"components/menu":1,"components/scrollView":1,"components/search":1,"components/swiper":1};
+/******/ 		var cssChunks = {"element/loading":1,"pages/strategy/components/address":1,"pages/strategy/components/content":1,"pages/strategy/components/location":1,"components/classify":1,"components/content":1,"components/menu":1,"components/scrollView":1,"components/search":1,"components/swiper":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/classify":"components/classify","components/content":"components/content","components/menu":"components/menu","components/scrollView":"components/scrollView","components/search":"components/search","components/swiper":"components/swiper"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"element/loading":"element/loading","pages/strategy/components/address":"pages/strategy/components/address","pages/strategy/components/content":"pages/strategy/components/content","pages/strategy/components/location":"pages/strategy/components/location","components/classify":"components/classify","components/content":"components/content","components/menu":"components/menu","components/scrollView":"components/scrollView","components/search":"components/search","components/swiper":"components/swiper"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

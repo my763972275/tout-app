@@ -41,7 +41,8 @@
 </script>
 
 <style scoped>
-.active{
+	@import '../commons/css/uni.css';
+/* .active{
 	margin:0 20upx;
 }
 .content{
@@ -110,5 +111,5 @@
 }
 .active-introduce{
 	padding-left:10upx;
-}
+} */
 </style>
