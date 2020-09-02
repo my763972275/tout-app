@@ -1,8 +1,11 @@
 {
   "pages": [
+    
     "pages/strategy/strategy",
     "pages/index/index",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/city/city"
+   
   ],
   "subPackages": [],
   "window": {
@@ -39,10 +42,5 @@
   },
   "usingComponents": {
     "load-list": "/element/loading"
-  },
-  "permission":{
-		"scope.userLocation":{
-			"desc":"你的位置信息将用于小程序位置接口的效果展示"
-		}
-	}
+  }
 }

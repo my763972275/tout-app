@@ -3,11 +3,11 @@
 		<view class="address">
 			<view class="address-img"><image src="cloud://travel-pbvky.7472-travel-pbvky-1302868032/list/bg1.jpg" mode="widthFix"></image></view>
 			<view class="address-list">
-				<view class="address-text" @click="chooseCity">
+				<view class="address-text">
 					<text class="words">{{ address }}</text>
-					<view class="changeAddress">
+					<view class="changeAddress"  @click="chooseCity">
 						<text>切换</text>
-						<image src="../../../static/more.webp" mode="widthFix"></image>
+						<image src="../../../static/more.webp" mode="widthFix" ></image>
 					</view>
 				</view>
 				<text class="words-eng">{{ eng }}</text>
@@ -37,7 +37,12 @@ export default {
 		};
 	},
 	methods: {
-		chooseCity() {}
+		// 选择城市
+		chooseCity() {
+			uni.navigateTo({
+				url:'../city/city?name=' + this.address
+			})
+		}
 	}
 };
 </script>
@@ -72,11 +77,11 @@ export default {
 }
 .changeAddress{
 	background-color: #F1F1F1;
-	width:130upx;
-	height:70upx;
+	width:110upx;
+	height:55upx;
 	border-radius: 50upx;
-	line-height:70upx;
-	padding-left: 30upx;
+	line-height:55upx;
+	padding-left: 20upx;
 	margin-left:25upx;
 	display:inline-block;
 }
@@ -87,23 +92,24 @@ export default {
 }
 .menu{
 	position:absolute;
-	bottom:15upx;
-	right:15upx;
-	width: 300upx;
-	height:90upx;
+	bottom:8upx;
+	right:10upx;
+	width: 200upx;
+	height:75upx;
 	display:flex;
 	flex-direction: row;
 	justify-content: center;
 }
 .menu .video{
 	width:45%;
-	height:75upx;
-	line-height:75upx;
+	height:50upx;
+	line-height:50upx;
 	background-color: rgba(0,0,0,0.3);
-	border-radius: 50upx;
+	border-radius: 30upx;
 	color:white;
 	text-align: center;
 	border:1upx solid white;
+	font-size:22upx;
 }
 .menu .album{
 	margin-left:20upx;

@@ -11,8 +11,9 @@
 <script>
 	import Address from './components/address.vue';
 	import Content from './components/content.vue';
-	import Location from './components/location.vue'
-	import {locationData} from '../../commons/js/list.js'
+	import Location from './components/location.vue';
+	import {locationData} from '../../commons/js/list.js';
+	import { mapState } from 'vuex';
 	export default{
 		name:'strategy',
 		components:{
@@ -23,7 +24,8 @@
 		data(){
 			return{
 				height:0,
-				addressVal:''
+				addressVal:'',
+				addressdata:''
 			}
 		},
 		methods:{
@@ -36,6 +38,7 @@
 					console.log(err)
 					this.addressVal = '无锡市'
 				})
+				// this.$store.commit('citymuta',this.addressVal)
 			}
 		},
 		created() {
@@ -50,6 +53,21 @@
 				this.height = res[0].top + res[0].height;
 			});
 		},
+		//计算属性
+		// 页面进入执行一次，当数据发生变化时也会发生一次
+		computed:{
+			...mapState(['city']),
+			getCity(){
+				this.addressdata = this.city.citydata;
+			}
+		},
+		// 侦听器
+		// 当数据发生变化时才发生
+		watch:{
+			addressdata(newValue,oldValue){
+				this.addressVal = newValue;
+			}
+		}
 	}
 </script>
 

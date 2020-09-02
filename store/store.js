@@ -15,11 +15,14 @@ const navmin = {
 	nav:'',
 	pageid:0
 }
-
+const city = {
+	citydata:''
+}
 const state = {
 	list,
 	load,
-	navmin
+	navmin,
+	city
 }
 
 
@@ -54,6 +57,12 @@ export default new Vuex.Store({
 				loading:obj.loading,  //loading标志
 				nav:obj.nav,          //集合名
 				pageid:obj.pageid     //分页查询的页码
+			}
+		},
+		// 获取城市参数
+		citymuta(state,data){
+			state.city = {
+				citydata:data
 			}
 		}
 	}

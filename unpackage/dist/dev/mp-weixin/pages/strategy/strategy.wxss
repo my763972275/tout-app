@@ -1,12 +1,12 @@
 
-Location.data-v-5264ae7f{
+Location.data-v-13095034{
 	position:absolute;
 	top:620rpx;
 }
-Content.data-v-5264ae7f{
+Content.data-v-13095034{
 	position:absolute;
 }
-.publish.data-v-5264ae7f{
+.publish.data-v-13095034{
 	position:fixed;
 	bottom:20rpx;
 	left:50%; 
@@ -20,14 +20,14 @@ Content.data-v-5264ae7f{
 	font-size:70rpx;
 	line-height:100rpx;
 	text-align: center;
-	-webkit-animation: 1s showup-data-v-5264ae7f ease;
-	        animation: 1s showup-data-v-5264ae7f ease;
+	-webkit-animation: 1s showup-data-v-13095034 ease;
+	        animation: 1s showup-data-v-13095034 ease;
 }
-@-webkit-keyframes showup-data-v-5264ae7f{
+@-webkit-keyframes showup-data-v-13095034{
 0%  {bottom:-100px;opacity: 0;}
 100% {bottom:20px;opacity: 1;}
 }
-@keyframes showup-data-v-5264ae7f{
+@keyframes showup-data-v-13095034{
 0%  {bottom:-100px;opacity: 0;}
 100% {bottom:20px;opacity: 1;}
 }

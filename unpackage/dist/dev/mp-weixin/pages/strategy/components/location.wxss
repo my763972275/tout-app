@@ -1,17 +1,17 @@
 
-.locality.data-v-3edbf09c{
+.locality.data-v-516147eb{
 	margin:0 20rpx;
 }
-.title.data-v-3edbf09c{
+.title.data-v-516147eb{
 	color:#292c33;
 	font-size: 50rpx;
 }
-.activetext.data-v-3edbf09c{
+.activetext.data-v-516147eb{
 	color:#4CD964;
 	background:#ffdd00 !important;
 	border:1rpx solid #ffdd00 !important;
 }
-.menu-block view.data-v-3edbf09c{
+.menu-block view.data-v-516147eb{
 	background:white;
 	border:1rpx solid #c2c5cc;
 	border-radius:6rpx;
@@ -22,7 +22,7 @@
 	padding:15rpx;
 	margin:20rpx;
 }
-.menu-block.data-v-3edbf09c{
+.menu-block.data-v-516147eb{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
