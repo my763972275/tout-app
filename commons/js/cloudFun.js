@@ -28,4 +28,19 @@ var homelist = function(listdata,pageid){
 	})
 }
 
-export {home,homelist}
+// 公用存储用户登录的数据
+var login = function(userInfo){
+	return new Promise((resolve,reject) => {
+		let users = db.collection('user')
+		users.add({
+			data:userInfo
+		})
+		.then(res => {
+			resolve(res)
+		})
+		.catch(err => {
+			reject(err)
+		})
+	})
+}
+export {home,homelist,login}

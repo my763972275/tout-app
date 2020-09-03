@@ -50,7 +50,7 @@
 		},
 		created() {
 			// 定位
-			this.address()
+			this.address();
 		},
 		onLoad() {
 			const query = wx.createSelectorQuery();

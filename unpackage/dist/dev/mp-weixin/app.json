@@ -3,9 +3,8 @@
     "pages/strategy/strategy",
     "pages/index/index",
     "pages/my/my",
-    "pages/publish/publish",
-    "pages/city/city"
-    
+    "pages/city/city",
+    "pages/publish/publish"
   ],
   "subPackages": [],
   "window": {
@@ -42,5 +41,6 @@
   },
   "usingComponents": {
     "load-list": "/element/loading"
-  }
+  },
+  "sitemapLocation": "sitemap31.json"
 }

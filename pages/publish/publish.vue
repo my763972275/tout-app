@@ -58,8 +58,10 @@
 			</view>
 			
 		</view>
-		<view  class="publish" @click="publishContext">发布</view>
+		<view class="publish" @click="publishContext">发布</view>
 		<HMmessages ref="HMmessages" @complete="HMmessages = $refs.HMmessages"></HMmessages>
+		<!-- 登录模态框 -->
+		<Modal ref="modal"></Modal>
 	</view>
 </template>
 
@@ -68,10 +70,13 @@
 	import {mapState} from 'vuex';
 	import {locationData} from '../../commons/js/list.js';
 	import HMmessages from "@/element/HM-messages/HM-messages.vue"
+	import Modal from '../../element/modal.vue';
+	import {home} from '../../commons/js/cloudFun.js'
 	export default {
 		name:'travels',
 		components:{
-			HMmessages
+			HMmessages,
+			Modal
 		},
 		data() {
 			return {
@@ -82,6 +87,9 @@
 				topimg:[],
 				videos:'',
 				uploadvideos:false,
+				avatarUrl:'',
+				nickName:'',
+				openid:'',
 				fication:[
 					{
 						name:"景点"
@@ -92,7 +100,8 @@
 					{
 						name:"网红打卡"
 					}
-				]
+				],
+				formData:{}
 			}
 		},
 		onLoad() {
@@ -176,7 +185,7 @@
 			},
 			// 发布函数
 			publishContext(){
-				let data ={
+				this.formData ={
 					classifydata:this.fication[this.num].name,
 					title:this.titledata,
 					content:this.tipsdata,
@@ -184,7 +193,87 @@
 					video:this.videos,
 					address:this.address
 				}
-				console.log(data)
+				if(this.formData.title == ''){
+					this.HMmessages.show('标题必填',{icon:'error',iconColor:'white',fontColor:'white',background:"rgba(255,0,51,0.8)"})
+				}else if(this.formData.content == ''){
+					this.HMmessages.show('描述必填',{icon:'error',iconColor:'white',fontColor:'white',background:"rgba(255,0,51,0.8)"})
+				}else{
+					this.userInfo()
+				}
+			},
+			// 判断用户是否登录
+			userInfo(){
+				// 请求数据库查看用户是否存在，存在就是登录，反之未登录
+				home('user')
+				.then(res => {
+					// 用户没有登录
+					if(res.length == 0){
+						let message = '请登陆后再操作'
+						// dom更新循环结束之后的延迟回调
+						this.$nextTick(() =>{
+							this.$refs.modal.init(message)
+						})
+					}else{
+						console.log(res)
+						this.avatarUrl = res[0].avatarUrl;
+						this.nickName = res[0].nickName;
+						this.openid = res[0]._openid;
+						this.userdata()
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				})
+			},
+			// 用户上传数据到数据库 1.先上传图片到云存储 2.上传视频到云存储 3.上传所有数据到数据库
+			async userdata(){
+				// 先将图片上传到云存储
+				let staticimg = await this.staticImg();
+				// 将视频上传到云存储
+				let staticvideo = await this.staticVideo();
+			},
+			staticImg(){
+				// 把上传成功返回的图片放到数组里
+				var imgFileID = []
+				return new Promise((resolve,reject) => {
+					this.topimg.forEach(item => {
+						// 随机字符串拼接，防止图片url被重名覆盖
+						let imgion = item.lastIndexOf('.')
+						let eximg = item.slice(imgion);
+						let cloudpath =  Date.now() + Math.floor(Math.random(0,1) * 10000000) + eximg;
+						wx.cloud.uploadFile({
+							cloudPath:'static/' + cloudpath,
+							filePath:item
+						})
+						.then(res => {
+							imgFileID.push(res.fileID);
+							// 判断云存储返回的图片是否和用户上传的图片一样多
+							if(imgFileID.length == this.topimg.length){
+								resolve(imgFileID)
+							}
+						})
+						.catch(err => {
+							reject(err)
+						})
+					})
+				})
+			},
+			staticVideo(){
+				return new Promise((resolve,reject) => {
+					let videoion = this.videos.lastIndexOf('.')
+					let exvideo = this.videos.slice(videoion);
+					let videopath =  Date.now() + Math.floor(Math.random(0,1) * 10000000) + exvideo;
+						wx.cloud.uploadFile({
+							cloudPath:'videos/' + videopath,
+							filePath:this.videos
+						})
+						.then(res => {
+							resolve(res.fileID)
+						})
+						.catch(err => {
+							reject(err)
+						})
+				})
 			}
 		}
 	}

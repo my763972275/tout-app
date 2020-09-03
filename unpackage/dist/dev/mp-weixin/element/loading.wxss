@@ -1,5 +1,5 @@
 
-.loading.data-v-50d00b24{
+.loading.data-v-8943e8ea{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -9,7 +9,7 @@
 	        justify-content: center;
 	padding:30rpx 0;
 }
-.loader.data-v-50d00b24{
+.loader.data-v-8943e8ea{
 	display:inline-block;
 	width:40rpx;
 	height:40rpx;
@@ -17,11 +17,11 @@
 	border:7rpx solid greenyellow;
 	border-bottom-color:transparent;
 	border-radius:50%;
-	-webkit-animation:loader-data-v-50d00b24 1s linear infinite;
-	        animation:loader-data-v-50d00b24 1s linear infinite;
+	-webkit-animation:loader-data-v-8943e8ea 1s linear infinite;
+	        animation:loader-data-v-8943e8ea 1s linear infinite;
 }
 /* 360°旋转 */
-@-webkit-keyframes  loader-data-v-50d00b24{
+@-webkit-keyframes  loader-data-v-8943e8ea{
 0%{
 		-webkit-transform: rotate(0deg);
 		        transform: rotate(0deg);
@@ -31,7 +31,7 @@
 		        transform: rotate(360deg);
 }
 }
-@keyframes  loader-data-v-50d00b24{
+@keyframes  loader-data-v-8943e8ea{
 0%{
 		-webkit-transform: rotate(0deg);
 		        transform: rotate(0deg);

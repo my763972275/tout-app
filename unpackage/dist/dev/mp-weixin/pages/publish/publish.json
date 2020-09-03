@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "发表游记",
   "usingComponents": {
-    "h-mmessages": "/element/HM-messages/HM-messages"
+    "h-mmessages": "/element/HM-messages/HM-messages",
+    "modal": "/element/modal"
   }
 }
