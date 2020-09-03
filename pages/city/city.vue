@@ -5,7 +5,7 @@
 			<view class="search-cont">
 				<view class="city-search">
 					<image src="../../static/search.png" mode="widthFix" class="search-img"></image>
-					<input type="text" placeholder="发现你感兴趣的目的地" v-model="keywords" @focus="searchCity" @input="searchInput">
+					<input type="text" placeholder="发现你感兴趣的目的地" v-model="keywords" @input="searchInput">
 				</view>
 				<view class="search-code" v-if="!cityVal" @click="cancle">X</view>
 			</view>
@@ -32,7 +32,7 @@
 			<block v-for="(item,index) in citydata" :key="index">
 				<view class="results-city" @click="seekCity(item)">
 					<image src="../../static/location.png" mode="widthFix"></image>
-					<text>{{item.name}}</text>
+					<text>{{item}}</text>
 				</view>
 			</block>
 		</view>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-	import {locationData} from '../../commons/js/list.js'
+	import {locationData,cityDetail} from '../../commons/js/list.js';
 	export default {
 		name:'city',
 		data() {
@@ -65,21 +65,11 @@
 						name:'徐州市'
 					}
 				],
-				citydata:[
-					{
-						name:'上海市'
-					},
-					{
-						name:'杭州市'
-					}
-				]
+				citydata:[]
 			}
 		},
 		onLoad(e) {
 			this.addressVal = e.name
-		},
-		mounted() {
-			// this.address()
 		},
 		methods: {
 			// 点击定位取到城市名
@@ -98,28 +88,34 @@
 					url:'../strategy/strategy'
 				})
 			},
-			searchCity(e){
-				this.cityVal = false;
+			// input事件
+			searchInput(e){
+				cityDetail(e.target.value)
+				.then(res => {
+					// 取出城市名
+					let cityname = res[0].city;
+					let cityArray = res.map((item) => {
+						return item.title
+					})
+					this.citydata = [cityname,...cityArray]
+				})
+				.catch(err => {
+					console.log(err)
+				})
 			},
-			searchInput(){
-				
-			},
+			// 关闭搜索框
 			cancle(){
 				this.cityVal = true;
+				this.keywords = '';
+				this.citydata = [];
 			},
-			seekCity(index){
-				
+			seekCity(city){
+				this.keywords = city;
+				this.$store.commit('citymuta',city);
+				uni.switchTab({
+					url:'../strategy/strategy'
+				})
 			},
-			// address(){
-			// 	locationData()
-			// 	.then(res => {
-			// 		this.addressVal = res.result.ad_info.city
-			// 	})
-			// 	.catch(err => {
-			// 		console.log(err)
-			// 		this.addressVal = '无锡市'
-			// 	})
-			// }
 		}
 	}
 </script>

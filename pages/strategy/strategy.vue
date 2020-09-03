@@ -4,7 +4,7 @@
 		<Location id="location"></Location>
 		<Content :style="'top:'+ height + 'px'"></Content>
 		<!-- 发表 -->
-		<view class="publish">+</view>
+		<view class="publish" @click="navTo">+</view>
 	</view>
 </template>
 
@@ -23,6 +23,7 @@
 		},
 		data(){
 			return{
+				// content在页面上的高度值
 				height:0,
 				addressVal:'',
 				addressdata:''
@@ -39,6 +40,12 @@
 					this.addressVal = '无锡市'
 				})
 				// this.$store.commit('citymuta',this.addressVal)
+			},
+			// 跳转到发布页面
+			navTo(){
+				uni.navigateTo({
+					url:'../publish/publish'
+				})
 			}
 		},
 		created() {

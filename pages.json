@@ -24,6 +24,12 @@
             "style" : {
 				"navigationBarTitleText": "选择城市"
 			}
+        },
+		{
+            "path" : "pages/publish/publish",
+            "style" : {
+				"navigationBarTitleText": "发表游记"
+			}
         }
     ],
 	"globalStyle": {

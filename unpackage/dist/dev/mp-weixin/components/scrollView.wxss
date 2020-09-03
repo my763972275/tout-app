@@ -1,5 +1,5 @@
 
-.scroll.data-v-91d4b4e6{
+.scroll.data-v-b3346334{
 	white-space: nowrap;
 	width:100%;
 	position:absolute;
@@ -8,30 +8,30 @@
 	padding:20rpx 0;
 	background:white;
 }
-.con-text-a.data-v-91d4b4e6{
+.con-text-a.data-v-b3346334{
 	color:#292c33;
 	font-size:30rpx;
 	font-weight: bold;
 }
-.con-text-b.data-v-91d4b4e6{
+.con-text-b.data-v-b3346334{
 	color:#9ea0a5;
 	font-size: 23rpx;
 }
-.list-cont.data-v-91d4b4e6{
+.list-cont.data-v-b3346334{
 	width:180rpx;
 	display:inline-block;
 	text-align: center;
 }
-.active.data-v-91d4b4e6{
+.active.data-v-b3346334{
 	background-image:-webkit-linear-gradient(left,#ccffff 0%, #ffcc00 100%);
 	background-image:linear-gradient(to right,#ccffff 0%, #ffcc00 100%);
 	border-top-right-radius:50rpx;
 }
-.activea.data-v-91d4b4e6{
+.activea.data-v-b3346334{
 	color:#292c33 !important;
 	font-size:31rpx !important;
 }
-.activeb.data-v-91d4b4e6{
+.activeb.data-v-b3346334{
 	color: #292c33 !important;
 	font-size: 23rpx !important;
 }
