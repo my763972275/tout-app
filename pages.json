@@ -1,6 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+		
 			"path": "pages/details/details",
 			"style": {
 				"navigationBarTitleText": "详情页"
@@ -18,14 +25,7 @@
 				"navigationBarTitleText": "飞猪旅游"
 			}
 		},
-		
 		{
-			"path": "pages/my/my",
-			"style": {
-				"navigationBarTitleText": "我的"
-			}
-		}
-	    ,{
             "path" : "pages/city/city",
             "style" : {
 				"navigationBarTitleText": "选择城市"
