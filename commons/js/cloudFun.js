@@ -14,7 +14,7 @@ var home = function(coll){
 		})
 	})
 }
-// 请求攻略列表的数据
+// 分页请求攻略列表的数据
 var homelist = function(listdata,pageid){
 	return new Promise((resolve,reject) => {
 		const collData = db.collection(listdata).limit(2).skip(pageid * 2)
@@ -28,10 +28,24 @@ var homelist = function(listdata,pageid){
 	})
 }
 
-// 公用存储用户登录的数据
-var login = function(userInfo){
+// 条件查询数据库
+var selectData = function(keywords,coll){
 	return new Promise((resolve,reject) => {
-		let users = db.collection('user')
+		const collData = db.collection(coll).where(keywords)
+		.get()
+		.then(res => {
+			resolve(res.data)
+		})
+		.catch(err => {
+			reject(err)
+		})
+	})
+}
+
+// 云数据库添加公用函数
+var addDatabase = function(userInfo,coll){
+	return new Promise((resolve,reject) => {
+		let users = db.collection(coll)
 		users.add({
 			data:userInfo
 		})
@@ -43,4 +57,20 @@ var login = function(userInfo){
 		})
 	})
 }
-export {home,homelist,login}
+
+// 上传文件到云数据库的公用函数
+var uploadFiles = function(newPath,data,coll){
+	return new Promise((resolve,reject) => {
+		wx.cloud.uploadFile({
+			cloudPath:`${coll}/` + newPath,
+			filePath:data
+		})
+		.then(res => {
+			resolve(res.fileID)
+		})
+		.catch(err => {
+			reject(err)
+		})
+	})
+}
+export {home,homelist,addDatabase,uploadFiles,selectData}

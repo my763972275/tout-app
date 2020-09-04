@@ -1,0 +1,19 @@
+
+.cont-back.data-v-7567d63d{
+	width:95%;
+	margin:0 auto;
+	padding: 20rpx;
+	background: white;
+}
+.cont-back video.data-v-7567d63d{
+	width:100%;	
+	margin-bottom:5rpx;
+}
+.cont-back .cont-introduce image.data-v-7567d63d{
+	width:100%;	
+	margin-bottom:5rpx;
+}
+.img-video.data-v-7567d63d{
+	font-size:40rpx;
+}
+

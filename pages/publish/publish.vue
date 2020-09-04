@@ -66,12 +66,12 @@
 </template>
 
 <script>
-	import { previewImg } from '../../commons/js/common.js';
+	import { previewImg,timer } from '../../commons/js/common.js';
 	import {mapState} from 'vuex';
 	import {locationData} from '../../commons/js/list.js';
 	import HMmessages from "@/element/HM-messages/HM-messages.vue"
 	import Modal from '../../element/modal.vue';
-	import {home} from '../../commons/js/cloudFun.js'
+	import {home,addDatabase,uploadFiles} from '../../commons/js/cloudFun.js'
 	export default {
 		name:'travels',
 		components:{
@@ -104,20 +104,6 @@
 				formData:{}
 			}
 		},
-		onLoad() {
-			uni.getSystemInfo({
-			    success: function (res) {
-					console.log(res.statusBarHeight)
-			        console.log(res.model);
-			        console.log(res.pixelRatio);
-			        console.log(res.windowWidth);
-			        console.log(res.windowHeight);
-			        console.log(res.language);
-			        console.log(res.version);
-			        console.log(res.platform);
-			    }
-			});
-		},
 		created() {
 			this.getLocation()
 		},
@@ -132,7 +118,7 @@
 			},
 			// 上传图片
 			uploadImg(){
-				uni.showLoading({
+				wx.showLoading({
 					title:'上传中',
 					icon:'../../static/loading.svg'
 				})
@@ -141,7 +127,7 @@
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
 					sourceType: ['album'], //从相册选择
 					success: res => {
-					 uni.hideLoading();
+					 wx.hideLoading();
 					 this.topimg = [...this.topimg,...res.tempFilePaths];
 					}
 				})
@@ -149,7 +135,7 @@
 			// 上传视频
 			uploadVideo(){
 				var self = this;
-				uni.showLoading({
+				wx.showLoading({
 					title:'上传中',
 					icon:'../../static/loading.svg'
 				})
@@ -158,7 +144,7 @@
 					maxDuration:20,
 					sourceType: ['camera', 'album'],
 					success: function (res) {
-						uni.hideLoading();
+						wx.hideLoading();
 						self.uploadvideos = true;
 						self.videos = res.tempFilePath;
 					}
@@ -173,6 +159,7 @@
 				this.videos = '';
 				this.uploadvideos = false;
 			},
+			// 获取当前位置
 			getLocation(){
 				locationData()
 				.then(res => {
@@ -183,21 +170,17 @@
 					// this.addressVal = '无锡市'
 				})
 			},
-			// 发布函数
+			// 必填项校验提示
 			publishContext(){
-				this.formData ={
-					classifydata:this.fication[this.num].name,
-					title:this.titledata,
-					content:this.tipsdata,
-					album:this.topimg,
-					video:this.videos,
-					address:this.address
-				}
-				if(this.formData.title == ''){
+				if(this.titledata == ''){
 					this.HMmessages.show('标题必填',{icon:'error',iconColor:'white',fontColor:'white',background:"rgba(255,0,51,0.8)"})
-				}else if(this.formData.content == ''){
+				}else if(this.tipsdata == ''){
 					this.HMmessages.show('描述必填',{icon:'error',iconColor:'white',fontColor:'white',background:"rgba(255,0,51,0.8)"})
 				}else{
+					wx.showLoading({
+						title:'发布中',
+						mask:true
+					})
 					this.userInfo()
 				}
 			},
@@ -214,7 +197,6 @@
 							this.$refs.modal.init(message)
 						})
 					}else{
-						console.log(res)
 						this.avatarUrl = res[0].avatarUrl;
 						this.nickName = res[0].nickName;
 						this.openid = res[0]._openid;
@@ -230,8 +212,37 @@
 				// 先将图片上传到云存储
 				let staticimg = await this.staticImg();
 				// 将视频上传到云存储
-				let staticvideo = await this.staticVideo();
+				if(this.videos != ''){
+					var staticvideo = await this.staticVideo();
+				}
+				
+				let users = {
+					classifydata:this.fication[this.num].name,
+					title:this.titledata,
+					content:this.tipsdata,
+					album:staticimg,
+					video:staticvideo,
+					address:this.address,
+					avatarUrl:this.avatarUrl,
+					nickName:this.nickName,
+					openid:this.openid,
+					time:timer()
+				}
+				// 上传参数到云数据库
+				addDatabase(users,'publish')
+				.then(res => {
+					this.$store.commit('routmuta',true)
+				    wx.hideLoading();
+					this.HMmessages.show('发布成功',{icon:'success',iconColor:'black',fontColor:'black',background:"rgba(0,255,20,0.8)"})
+					uni.switchTab({
+						url:'../strategy/strategy'
+					})
+				})
+				.catch(err => {
+					console.log(err)
+				})
 			},
+			// 上传图片到云数据库
 			staticImg(){
 				// 把上传成功返回的图片放到数组里
 				var imgFileID = []
@@ -241,12 +252,9 @@
 						let imgion = item.lastIndexOf('.')
 						let eximg = item.slice(imgion);
 						let cloudpath =  Date.now() + Math.floor(Math.random(0,1) * 10000000) + eximg;
-						wx.cloud.uploadFile({
-							cloudPath:'static/' + cloudpath,
-							filePath:item
-						})
+						uploadFiles(cloudpath,item,'static')
 						.then(res => {
-							imgFileID.push(res.fileID);
+							imgFileID.push(res);
 							// 判断云存储返回的图片是否和用户上传的图片一样多
 							if(imgFileID.length == this.topimg.length){
 								resolve(imgFileID)
@@ -258,21 +266,20 @@
 					})
 				})
 			},
+			// 上传视频到云数据库
 			staticVideo(){
 				return new Promise((resolve,reject) => {
 					let videoion = this.videos.lastIndexOf('.')
 					let exvideo = this.videos.slice(videoion);
 					let videopath =  Date.now() + Math.floor(Math.random(0,1) * 10000000) + exvideo;
-						wx.cloud.uploadFile({
-							cloudPath:'videos/' + videopath,
-							filePath:this.videos
-						})
+						uploadFiles(videopath,this.videos,'videos')
 						.then(res => {
-							resolve(res.fileID)
+							resolve(res)
 						})
 						.catch(err => {
 							reject(err)
 						})
+					
 				})
 			}
 		}

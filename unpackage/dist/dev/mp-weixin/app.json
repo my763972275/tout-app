@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/details/details",
     "pages/strategy/strategy",
     "pages/index/index",
     "pages/my/my",
@@ -41,6 +42,5 @@
   },
   "usingComponents": {
     "load-list": "/element/loading"
-  },
-  "sitemapLocation": "sitemap31.json"
+  }
 }

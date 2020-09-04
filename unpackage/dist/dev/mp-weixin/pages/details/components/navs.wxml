@@ -1,0 +1,1 @@
+<view class="data-v-2d78a6a8"><view class="navs data-v-2d78a6a8"><block wx:for="{{navalue}}" wx:for-item="item" wx:for-index="index" wx:key="index"><block class="data-v-2d78a6a8"><text class="{{['data-v-2d78a6a8',(index==num)?'activetext':'']}}">{{item}}</text></block></block></view></view>

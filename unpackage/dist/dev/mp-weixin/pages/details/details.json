@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "详情页",
+  "usingComponents": {
+    "navs": "/pages/details/components/navs",
+    "swiper": "/components/swiper",
+    "matter": "/pages/details/components/matter",
+    "comment": "/pages/details/components/comment"
+  }
+}

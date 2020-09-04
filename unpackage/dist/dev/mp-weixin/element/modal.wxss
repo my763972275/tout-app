@@ -1,5 +1,5 @@
 
-.warp.data-v-3505063c{
+.warp.data-v-49f41815{
 	position:fixed;
 	left:0;
 	right:0;
@@ -8,7 +8,7 @@
 	background:rgba(0,0,0,0.6);
 	z-index:9999;
 }
-.warp-view.data-v-3505063c{
+.warp-view.data-v-49f41815{
 	width:500rpx;
 	height:200rpx;
 	background:white;
@@ -22,13 +22,13 @@
 	border-radius: 8rpx;
 	overflow: hidden;
 }
-.warp-text.data-v-3505063c{
+.warp-text.data-v-49f41815{
 	text-align: center;
 	margin-top:30rpx;
 	font-size: 34rpx;
 	color:#666;
 }
-.warp-flex.data-v-3505063c{
+.warp-flex.data-v-49f41815{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -43,14 +43,14 @@
 	line-height:80rpx;
 	-webkit-transform:translateZ(0);
 }
-.warp-flex button.data-v-3505063c{
+.warp-flex button.data-v-49f41815{
 	border:none;
 	-webkit-box-flex:1;
 	-webkit-flex:1;
 	        flex:1;
 	font-size:30rpx;
 }
-.warp-flex button.data-v-3505063c:nth-child(2){
+.warp-flex button.data-v-49f41815:nth-child(2){
 	background:#007AFF;
 	color:white;
 }

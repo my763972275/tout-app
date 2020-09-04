@@ -36,6 +36,8 @@
 		methods:{
 			menubtn(index,name){
 				this.num = index;
+				// 组件间传值
+				uni.$emit('tabSelect',{name:name})
 			}
 		}
 	}

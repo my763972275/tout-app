@@ -1,0 +1,24 @@
+
+.navs text.data-v-2d78a6a8{
+	display:block;
+	font-size:30rpx;
+	width:100rpx;
+	text-align: center;
+	color:#464230;
+	margin-bottom:-8rpx;
+}
+.navs.data-v-2d78a6a8{
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	height:50rpx;
+	line-height: 50rpx;
+	padding:5rpx 0;
+}
+.activetext.data-v-2d78a6a8{
+	border-bottom: 6rpx solid #C0C0C0;
+}
+

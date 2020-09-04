@@ -1,0 +1,16 @@
+
+page{
+	background: #f8f8f8;
+}
+.scroll-flex{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	background:#ffd00c;
+	z-index:2;
+}
+Swiper{
+	height:620rpx;
+}
+

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "h-mmessages": "/element/HM-messages/HM-messages",
+    "modal": "/element/modal"
+  },
+  "component": true
+}

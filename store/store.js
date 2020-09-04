@@ -18,11 +18,15 @@ const navmin = {
 const city = {
 	citydata:''
 }
+const routing ={
+	flag:false
+}
 const state = {
 	list,
 	load,
 	navmin,
-	city
+	city,
+	routing
 }
 
 
@@ -63,6 +67,12 @@ export default new Vuex.Store({
 		citymuta(state,data){
 			state.city = {
 				citydata:data
+			}
+		},
+		// 发布成功后是否重新刷新页面
+		routmuta(state,flag){
+			state.routing = {
+				flag:flag
 			}
 		}
 	}

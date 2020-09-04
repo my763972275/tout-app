@@ -14,7 +14,7 @@
 </template>
 
 <script>
-	import {login} from '../commons/js/cloudFun.js';
+	import {addDatabase} from '../commons/js/cloudFun.js';
 	import HMmessages from "@/element/HM-messages/HM-messages.vue"
 	export default{
 		components:{
@@ -37,11 +37,10 @@
 			getUserInfo(e){
 				// 存储用户信息到user数据库
 				let user = e.detail.userInfo
-				login(user)
+				addDatabase(user,'user')
 				.then(res => {
 					this.modalshow = false;
 					this.HMmessages.show('登录成功',{icon:'success',iconColor:'black',fontColor:'black',background:"rgba(0,255,20,0.8)"})
-					console.log(res)
 				})
 				.catch(err => {
 					console.log(err)

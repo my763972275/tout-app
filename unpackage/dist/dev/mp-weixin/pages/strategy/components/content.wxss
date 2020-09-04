@@ -1,7 +1,7 @@
-.active.data-v-1d06aeb3{
+.active.data-v-3a6b5a0c{
 	margin:0 20rpx;
 }
-.content.data-v-1d06aeb3{
+.content.data-v-3a6b5a0c{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -13,7 +13,7 @@
 	-webkit-flex-wrap:wrap;
 	overflow: hidden;
 }
-.content-article.data-v-1d06aeb3{
+.content-article.data-v-3a6b5a0c{
 	width:48%;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
@@ -24,7 +24,7 @@
 	display:flex;
 	box-sizing: border-box;
 }
-.purchase.data-v-1d06aeb3{
+.purchase.data-v-3a6b5a0c{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -33,19 +33,18 @@
 	        align-items: center;
 	padding-bottom: 10rpx;
 }
-.content-img.data-v-1d06aeb3{
+.content-img.data-v-3a6b5a0c{
 	height:400rpx !important;
-	object-fit: cover;   /* 图片剪裁
- */
+	object-fit: cover;   /* 图片剪裁 */
 	overflow: hidden;
 }
-.content-img image.data-v-1d06aeb3{
+.content-img image.data-v-3a6b5a0c{
 	width:100% !important;
 	height:100% !important;
 	object-fit: cover;
 	border-radius:10rpx;
 }
-.active-name.data-v-1d06aeb3{
+.active-name.data-v-3a6b5a0c{
 	font-size:32rpx;
 	color:#d0b083;
 	margin:10rpx 0;
@@ -54,7 +53,7 @@
 	-webkit-line-clamp:1;
 	overflow: hidden;
 }
-.active-title.data-v-1d06aeb3{
+.active-title.data-v-3a6b5a0c{
 	font-size: 32rpx;
 	color:#444444;
 	font-weight:bold;
@@ -65,33 +64,33 @@
 	overflow: hidden;
 	height:100rpx !important;
 }
-.active-label.data-v-1d06aeb3{
+.active-label.data-v-3a6b5a0c{
 	font-size: 25rpx;
 	color:#d0b083;
 	padding:10rpx 0;
 }
-.active-price.data-v-1d06aeb3{
+.active-price.data-v-3a6b5a0c{
 	font-size: 36rpx;
 	color:#ff6b28;
 	padding-right: 9rpx;
 }
-.active-purchase.data-v-1d06aeb3{
+.active-purchase.data-v-3a6b5a0c{
 	font-size:30rpx;
 	color:#cacaca;
 }
-.active-introduce.data-v-1d06aeb3{
+.active-introduce.data-v-3a6b5a0c{
 	padding-left:10rpx;
 }
 /* 用户头像 */
-.userInfo image.data-v-1d06aeb3{
+.userInfo image.data-v-3a6b5a0c{
 	width:50rpx;
 	height:50rpx;
 	border-radius:50rpx;
 }
-.userInfo text.data-v-1d06aeb3{
+.userInfo text.data-v-3a6b5a0c{
 	padding-left:20rpx;
 }
-.userInfo.data-v-1d06aeb3{
+.userInfo.data-v-3a6b5a0c{
 	padding-top:20rpx;
 }
 
