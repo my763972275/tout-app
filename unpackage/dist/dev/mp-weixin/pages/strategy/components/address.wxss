@@ -1,5 +1,5 @@
 
-.address-text.data-v-00f4e7f2 {
+.address-text.data-v-3bbe3ea4 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -7,30 +7,30 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.address-text image.data-v-00f4e7f2 {
+.address-text image.data-v-3bbe3ea4 {
 	width: 33rpx;
 	height: 33rpx;
 	padding-left: 30rpx;
 }
-.address.data-v-00f4e7f2 {
+.address.data-v-3bbe3ea4 {
 	position: relative;
 	height: 400rpx;
 }
-.address-list.data-v-00f4e7f2 {
+.address-list.data-v-3bbe3ea4 {
 	position: absolute;
 	left: 50rpx;
 	top: 100rpx;
 	z-index: 999;
 }
-.address-img.data-v-00f4e7f2 {
+.address-img.data-v-3bbe3ea4 {
 	width: 100%;
 	height: 400rpx;
 }
-.address-img image.data-v-00f4e7f2 {
+.address-img image.data-v-3bbe3ea4 {
 	width: 100% !important;
 	height: 100% !important;
 }
-.changeAddress.data-v-00f4e7f2{
+.changeAddress.data-v-3bbe3ea4{
 	background-color: #F1F1F1;
 	width:110rpx;
 	height:55rpx;
@@ -40,12 +40,12 @@
 	margin-left:25rpx;
 	display:inline-block;
 }
-.changeAddress image.data-v-00f4e7f2{
+.changeAddress image.data-v-3bbe3ea4{
 	margin-left:-20rpx;
 	vertical-align: middle;
 	margin-top:-8rpx;
 }
-.menu.data-v-00f4e7f2{
+.menu.data-v-3bbe3ea4{
 	position:absolute;
 	bottom:8rpx;
 	right:10rpx;
@@ -62,7 +62,7 @@
 	-webkit-justify-content: center;
 	        justify-content: center;
 }
-.menu .video.data-v-00f4e7f2{
+.menu .video.data-v-3bbe3ea4{
 	width:45%;
 	height:50rpx;
 	line-height:50rpx;
@@ -73,19 +73,19 @@
 	border:1rpx solid white;
 	font-size:22rpx;
 }
-.menu .album.data-v-00f4e7f2{
+.menu .album.data-v-3bbe3ea4{
 	margin-left:20rpx;
 }
-.words.data-v-00f4e7f2 {
+.words.data-v-3bbe3ea4 {
 	font-size: 50rpx;
 	color: white;
 	font-weight: bold;
 }
-.words-eng.data-v-00f4e7f2 {
+.words-eng.data-v-3bbe3ea4 {
 	font-size: 50rpx;
 	color: white;
 }
-.back.data-v-00f4e7f2 {
+.back.data-v-3bbe3ea4 {
 	background: rgba(0, 51, 0, 0.3);
 	position: absolute;
 	top: 0;
@@ -94,7 +94,7 @@
 	width: 100%;
 }
 /* 机票 */
-.Plane.data-v-00f4e7f2{
+.Plane.data-v-3bbe3ea4{
 	position:absolute;
 	top:440rpx;
 	width: 95%;

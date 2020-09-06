@@ -1,7 +1,7 @@
 <template>
 	<view class="search-cont">
 		<view class="searchCode"><image src="../static/scan.png" mode="widthFix"></image></view>
-		<view class="search">
+		<view class="search" @click="navTo">
 			<image src="../static/search.png" mode="widthFix" class="search-img"></image>
 			<input type="text" placeholder="请输入关键字" disabled />
 		</view>
@@ -14,6 +14,13 @@ export default {
 	name: 'search',
 	data() {
 		return {};
+	},
+	methods:{
+		navTo(){
+			uni.navigateTo({
+				url:"../search/search"
+			})
+		}
 	}
 };
 </script>

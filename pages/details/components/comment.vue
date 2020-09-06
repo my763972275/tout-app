@@ -2,11 +2,11 @@
 	<view>
 		<!-- 评论 -->
 		<view class="cont-message cont-back" id="message">
-			<view class="img-video">宝贝评价{{leaveword.length}}</view>
+			<view class="img-video">宝贝评价({{leaveword.length}})</view>
 			<!-- 分类 -->
 			<view class="menu-block">
 				<block v-for="(item,index) in newmessage" :key="index">
-					<view :class="{'activetext':index == num}" @click="menubtn(index)">{{item}}</view>
+					<view :class="{'activetext':index == num}" @click="menubtn(index,item)">{{item}}</view>
 				</block>
 			</view>
 			<!-- 评价 -->
@@ -23,7 +23,7 @@
 						</view>
 					</view>
 					<view class="cont-name-text">
-						<text>{{item.usermess}}</text>
+						<text>{{item.comment}}</text>
 					</view>
 				</view>
 			</block>
@@ -33,7 +33,7 @@
 			<input type="text" placeholder="我来说两句" disabled="disabled">
 		</view>
 		<!-- 评论框 -->
-		<view class="Comment-box" v-if="box">
+		<view class="Comment-box" v-if="box" :catchtouchmove="true">
 			<view class="Comment-text">
 				<textarea v-model="comment" placeholder="写下你对这篇游记的评价" />
 			</view>
@@ -52,58 +52,149 @@
 <script>
 	import HMmessages from "@/element/HM-messages/HM-messages.vue";
 	import Modal from "../../../element/modal.vue";
+	import {selectData,addDatabase,home} from '../../../commons/js/cloudFun.js'
+	import { timer } from '../../../commons/js/common.js';
 	export default{
 		components:{
 			HMmessages,
 			Modal
 		},
 		props:{
-			
+			commentid:String,
+			leaveword:Array,
+			messageword:Array
+		},
+		watch:{
+			messageword(newvalue,oldvalue){
+				this.newmessage = ['全部',...newvalue];
+				// this.num = 0;
+			}
 		},
 		data(){
 			return{
 				num:0,
-				newmessage:["全部","服务不好"],
+				name:'全部',
 				box:false,
 				comment:'',
-				leaveword:[
-					{
-						avatarUrl:"https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132",
-						nickName:'Vicky',
-						time:'2020-9-5 9:49:0',
-						usermess:'真好玩！'
-					},
-					{
-						avatarUrl:"https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132",
-						nickName:'Vicky',
-						time:'2020-9-5 9:49:0',
-						usermess:'玩起来雕塑爱好读完浅黄色的u爱护动物前后赌气的话！'
-					},
-					{
-						avatarUrl:"https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132",
-						nickName:'Vicky',
-						time:'2020-9-5 9:49:0',
-						usermess:'苏地区和度恒温i去大户漆黑的u契合度其后对其厚度武器和对其会对我去的确很大！'
-					}
-				]
+				avatarUrl:'',
+				nickName:'',
+				openid:'',
+				flag:false,
+				newmessage:[]
 			}
 		},
 		methods:{
-			menubtn(index){
-				this.num = index;
+			getCommentList(){
+				selectData({id:this.commentid},'comment')
+				.then(res => {
+					this.leaveword = res
+				})
+				.catch(err => {
+					console.log(err)
+				})
 			},
+			aiMessage(){
+				return new Promise((resolve,reject) => {
+					wx.cloud.callFunction({
+						name:'aimessage',
+						data:{
+							message:this.comment
+						}
+					})
+					.then(res => {
+						let aidata = res.result.aimessage.items
+						resolve(aidata);
+					})
+					.catch(err => {
+						reject(err)
+					})
+				})
+			},
+			menubtn(index,name){
+				this.num = index;
+				this.name = name;
+				this.$parent.fatherMethod(this.commentid,this.name);
+			},
+			// 显示评论框
 			popup(){
-				this.box = true;
+				// 评论之前先判断用户是否登录
+				home('user')
+				.then(res => {
+					// 用户没有登录
+					if(res.length == 0){
+						let message = '请登陆后再操作'
+						// dom更新循环结束之后的延迟回调
+						this.$nextTick(() =>{
+							this.$refs.modal.init(message)
+						})
+					}else{
+						this.avatarUrl = res[0].avatarUrl;
+						this.nickName = res[0].nickName;
+						this.openid = res[0]._openid;
+						this.box = true;
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				})
+				
 			},
 			cancel(){
 				this.box = false;
+				this.comment = '';
 			},
-			submit(){
+			async submit(){
 				if(this.comment == ''){
 					this.HMmessages.show('请填写评论',{icon:'error',iconColor:'white',fontColor:'white',background:"rgba(255,0,51,0.8)"})
 				}else{
-					this.box = false;
+					let stamess = await this.aiMessage();
+					console.log(stamess)
+					if(stamess.length == 0){
+						// 提交到数据库 
+						await this.messdata('')
+					}else{
+						// 百度返回标签不为空
+						let ali = stamess[stamess.length - 1]
+						let [prop,adj] = [ali.prop,ali.adj]
+						let classif = prop+adj;
+						// 提交到数据库
+						await this.messdata(classif)
+					}
 				}
+			},
+			// 把所有数据提交到数据库
+			messdata(classif){
+				uni.showLoading({
+					title:'上传中...'
+				})
+				return new Promise((resolve,reject) => {
+					let commentdata = {
+						id:this.commentid,
+						avatarUrl:this.avatarUrl,
+						nickName:this.nickName,
+						openid:this.openid,
+						comment:this.comment,
+						classify:classif,
+						time:timer()
+					}
+					addDatabase(commentdata,'comment')
+					.then(res => {
+						this.box = false;
+						this.flag = true;
+						uni.hideLoading();
+						this.HMmessages.show('评论成功',{icon:'success',iconColor:'black',fontColor:'black',background:"rgba(0,255,0,0.8)"})
+						// 清空输入框
+						this.comment = '';
+						// 留言成功，刷新留言数据，用户实时看到，执行父组件的方法
+						// 子组件调用父组件的方法
+						this.$parent.fatherMethod(this.commentid,this.name);
+						
+						resolve(res)
+					})
+					.catch(err => {
+						reject(err)
+					})
+				})
 			}
 		}
 	}

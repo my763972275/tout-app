@@ -7,7 +7,7 @@
 					<text class="words">{{ address }}</text>
 					<view class="changeAddress"  @click="chooseCity">
 						<text>切换</text>
-						<image src="../../../static/more.webp" mode="widthFix" ></image>
+						<image src="../../../static/more.jpg" mode="widthFix" ></image>
 					</view>
 				</view>
 				<text class="words-eng">{{ eng }}</text>

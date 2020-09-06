@@ -1,5 +1,5 @@
 
-.navs text.data-v-2d78a6a8{
+.navs text.data-v-2acd265a{
 	display:block;
 	font-size:30rpx;
 	width:100rpx;
@@ -7,7 +7,7 @@
 	color:#464230;
 	margin-bottom:-8rpx;
 }
-.navs.data-v-2d78a6a8{
+.navs.data-v-2acd265a{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -18,7 +18,7 @@
 	line-height: 50rpx;
 	padding:5rpx 0;
 }
-.activetext.data-v-2d78a6a8{
+.activetext.data-v-2acd265a{
 	border-bottom: 6rpx solid #C0C0C0;
 }
 

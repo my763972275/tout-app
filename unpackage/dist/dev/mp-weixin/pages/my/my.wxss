@@ -1,7 +1,7 @@
 
-.myhome.data-v-34ed30df{
-	background: -webkit-linear-gradient(bottom,#ffe566 10% #ffd300 100%);
-	background: linear-gradient(to top,#ffe566 10% #ffd300 100%);
+.myhome.data-v-0be17cc6{
+	background: -webkit-linear-gradient(bottom,#ffe566 10% ,#ffd300 100%);
+	background: linear-gradient(to top,#ffe566 10% ,#ffd300 100%);
 	height:350rpx;
 	display:-webkit-box;
 	display:-webkit-flex;
@@ -10,19 +10,19 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.wx-name image.data-v-34ed30df{
+.wx-name image.data-v-0be17cc6{
 	width:120rpx !important;
 	height:120rpx !important;
 	margin-right: 20rpx;
 	border-radius: 50%;
 	border:10rpx solid #999;
 }
-text.data-v-34ed30df{
+text.data-v-0be17cc6{
 	display:block;
 	magin:10rpx 0;
 	color:#999;
 }
-.wx-name.data-v-34ed30df{
+.wx-name.data-v-0be17cc6{
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:flex;
@@ -34,15 +34,15 @@ text.data-v-34ed30df{
 	        align-content: center;
 	height:200rpx;
 }
-.wx-text text.data-v-34ed30df:nth-child(1){font-size: 35rpx;}
-.wx-text text.data-v-34ed30df:nth-child(2){
+.wx-text text.data-v-0be17cc6:nth-child(1){font-size: 35rpx;}
+.wx-text text.data-v-0be17cc6:nth-child(2){
 	font-size:20rpx;
 	border:1rpx solid white;
 	border-radius:50%;
 	padding:7rpx;
 	text-align: center;
 }
-.wx-button button.data-v-34ed30df{
+.wx-button button.data-v-0be17cc6{
 	border:none;
 	font-size:30rpx;
 	background:-webkit-linear-gradient(left,#28a6f1 10%,#0e8dd7 80%);
@@ -50,10 +50,10 @@ text.data-v-34ed30df{
 	color:white;
 	border-radius: 50rpx;
 }
-.wx-button.data-v-34ed30df{
+.wx-button.data-v-0be17cc6{
 	margin:0 auto;
 }
-.wx-button-view.data-v-34ed30df{
+.wx-button-view.data-v-0be17cc6{
 	font-size:35rpx;
 	color:white;
 	margin-bottom:25rpx;

@@ -1,18 +1,18 @@
 
-.imageurl.data-v-4a862acc {
+.imageurl.data-v-4995ad73 {
 	width: 100%;
-	height: 500rpx !important;
+	height: 400rpx !important;
 }
-.swiper-item.data-v-4a862acc {
+.swiper-item.data-v-4995ad73 {
 	width: 100%;
-	height: 500rpx !important;
+	height: 400rpx !important;
 	z-index: 1000;
 	position: relative;
 }
-swiper.data-v-4a862acc {
-	height: 500rpx !important;
+swiper.data-v-4995ad73 {
+	height: 400rpx !important;
 }
-.banner-num.data-v-4a862acc {
+.banner-num.data-v-4995ad73 {
 	background: #333;
 	width: 100rpx;
 	color: white;
@@ -26,22 +26,22 @@ swiper.data-v-4a862acc {
 	bottom: 20rpx;
 	z-index: 2000;
 }
-.banner-posi.data-v-4a862acc {
-	height: 500rpx;
+.banner-posi.data-v-4995ad73 {
+	height: 400rpx;
 	position: relative;
 }
-.cont-back.data-v-4a862acc {
+.cont-back.data-v-4995ad73 {
 	padding: 20rpx;
 	background: white;
 }
-.title-com.data-v-4a862acc {
+.title-com.data-v-4995ad73 {
 	color: #333;
 	font-size: 35rpx;
 	font-weight: bold;
 	line-height: 1.5;
 	padding-bottom: 30rpx;
 }
-.volumn.data-v-4a862acc {
+.volumn.data-v-4995ad73 {
 	font-size: 25rpx;
 	color: #999;
 	display: -webkit-box;

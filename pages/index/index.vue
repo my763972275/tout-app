@@ -3,7 +3,7 @@
 		<!-- 搜索栏组件 -->
 		<Search></Search>
 		<!-- 轮播图组件 -->
-		<Swiper :banner = "banner"></Swiper>
+		<Swiper :banner = "banner" style="height:400upx;"></Swiper>
 		<Menu></Menu>
 		<Classify></Classify>
 		<!-- 滑动组件 -->

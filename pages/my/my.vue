@@ -15,9 +15,9 @@
 			</block>
 			<!-- 未登录 -->
 			<view class="wx-button" v-if="!wxlogin">
-				<view class="wx-button-view">登录发生变化，开启授权</view>
+				<view class="wx-button-view">登录生如夏花，开启授权</view>
 				<view>
-					<button plain="true" open-type="getUserInfo" @getuserinfo="getUserInfo"></button>
+					<button plain="true" open-type="getUserInfo" @getuserinfo="getUserInfo">去登陆</button>
 				</view>
 			</view>
 		</view>
@@ -29,20 +29,35 @@
 	export default{
 		data(){
 			return{
-				wxlogin:false
+				wxlogin:false,
+				username:[
+					{
+						nickName:'vicky',
+						avatarUrl:'https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132',
+					}
+				]
 			}
 		},
 		methods:{
-			getUserInfo(){
+			getUserInfo(e){
+				
+			},
+			ifUser(){
 				
 			}
+		},
+		onShow(){
+			// 判断用户是否登录
+			this.ifUser();
 		}
+		
+		
 	}
 </script>
 
 <style scoped>
 	.myhome{
-		background: linear-gradient(to top,#ffe566 10% #ffd300 100%);
+		background: linear-gradient(to top,#ffe566 10% ,#ffd300 100%);
 		height:350upx;
 		display:flex;
 		align-items: center;
