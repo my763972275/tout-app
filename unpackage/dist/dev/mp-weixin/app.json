@@ -42,5 +42,6 @@
   },
   "usingComponents": {
     "load-list": "/element/loading"
-  }
+  },
+  "sitemapLocation": "sitemap67.json"
 }
