@@ -32,6 +32,7 @@ var homelist = function(listdata,pageid){
 var selectData = function(keywords,coll){
 	return new Promise((resolve,reject) => {
 		const collData = db.collection(coll).where(keywords)
+		.orderBy('time','asc')
 		.get()
 		.then(res => {
 			resolve(res.data)

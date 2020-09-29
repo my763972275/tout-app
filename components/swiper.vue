@@ -33,7 +33,7 @@
 			<!-- 销量之类 -->
 			<view class="volumn">
 				<text>5分 超出预期</text>
-				<text>评论0条</text>
+				<text>评论{{leaveword.length}}条</text>
 				<text>月销100笔</text>
 			</view>
 		</view>
@@ -47,7 +47,8 @@ export default {
 	props: {
 		banner: Array,
 		nav: String,
-		title: String
+		title: String,
+		leaveword:Array
 	},
 	data() {
 		return {
@@ -75,16 +76,16 @@ export default {
 <style scoped>
 .imageurl {
 	width: 100%;
-	height: 500upx !important;
+	height: 400upx !important;
 }
 .swiper-item {
 	width: 100%;
-	height: 500upx !important;
+	height: 400upx !important;
 	z-index: 1000;
 	position: relative;
 }
 swiper {
-	height: 500upx !important;
+	height: 400upx !important;
 }
 .banner-num {
 	background: #333;
@@ -101,7 +102,7 @@ swiper {
 	z-index: 2000;
 }
 .banner-posi {
-	height: 500upx;
+	height: 400upx;
 	position: relative;
 }
 .cont-back {

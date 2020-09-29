@@ -212,9 +212,6 @@ var _cloudFun = __webpack_require__(/*! ../../commons/js/cloudFun.js */ 31);func
     } },
 
   methods: {
-    // tabSelect(name){
-    // 	console.log(name)
-    // },
     address: function address() {var _this2 = this;
       (0, _list.locationData)().
       then(function (res) {
@@ -226,13 +223,11 @@ var _cloudFun = __webpack_require__(/*! ../../commons/js/cloudFun.js */ 31);func
         console.log(err);
         _this2.addressVal = '无锡市';
       });
-      // this.$store.commit('citymuta',this.addressVal)
     },
     // 定位成功，查询数据库，取出该城市下的数据
     cityData: function cityData(objdata, collection) {var _this3 = this;
       (0, _cloudFun.selectData)(objdata, collection).
       then(function (res) {
-        console.log(res);
         _this3.publishData = res;
       }).
       catch(function (err) {

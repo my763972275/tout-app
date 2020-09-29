@@ -131,7 +131,20 @@ var _default =
       num: 0,
       navalue: ['宝贝', '详情', '评价'] };
 
-  } };exports.default = _default;
+  },
+  methods: {
+    navbtn: function navbtn(index) {
+      this.num = index;
+      console.log(index);
+      if (index === 0) {
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 300 });
+
+      } else {
+        this.$parent.fatherTab(index);
+      }
+    } } };exports.default = _default;
 
 /***/ }),
 

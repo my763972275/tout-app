@@ -1,9 +1,15 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/my/my",
+			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "飞猪旅游"
+			}
+		},
+		{
+			"path": "pages/strategy/strategy",
+			"style": {
+				"navigationBarTitleText": "攻略"
 			}
 		},
 		{
@@ -14,15 +20,9 @@
 			}
 		},
 		{
-			"path": "pages/strategy/strategy",
+			"path": "pages/my/my",
 			"style": {
-				"navigationBarTitleText": "攻略"
-			}
-		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "飞猪旅游"
+				"navigationBarTitleText": "我的"
 			}
 		},
 		{
@@ -31,6 +31,12 @@
 				"navigationBarTitleText": "选择城市"
 			}
         },
+		{
+		    "path" : "pages/search/search",
+		    "style" : {
+				"navigationBarTitleText": "搜索"
+			}
+		},
 		{
             "path" : "pages/publish/publish",
             "style" : {

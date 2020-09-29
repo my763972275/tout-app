@@ -199,7 +199,7 @@ var _common = __webpack_require__(/*! ../commons/js/common.js */ 69); //
 //
 //
 //
-var _default = { name: 'swiper', props: { banner: Array, nav: String, title: String }, data: function data() {return { bannerIndex: 1 };}, watch: { banner: function banner(newValue, oldValue) {return newValue.slice(0, 3);} }, methods: { // 轮播图预览
+var _default = { name: 'swiper', props: { banner: Array, nav: String, title: String, leaveword: Array }, data: function data() {return { bannerIndex: 1 };}, watch: { banner: function banner(newValue, oldValue) {return newValue.slice(0, 3);} }, methods: { // 轮播图预览
     localCont: function localCont(id) {(0, _common.previewImg)(this.banner, id);}, // 监听轮播图左右滑动事件
     bannerFun: function bannerFun(e) {this.bannerIndex = e.detail.current + 1;} } };exports.default = _default;
 

@@ -173,13 +173,27 @@ var _default =
 {
   data: function data() {
     return {
-      wxlogin: false };
+      wxlogin: false,
+      username: [
+      {
+        nickName: 'vicky',
+        avatarUrl: 'https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132' }] };
+
+
 
   },
   methods: {
-    getUserInfo: function getUserInfo() {
+    getUserInfo: function getUserInfo(e) {
 
-    } } };exports.default = _default;
+    },
+    ifUser: function ifUser() {
+
+    } },
+
+  onShow: function onShow() {
+    // 判断用户是否登录
+    this.ifUser();
+  } };exports.default = _default;
 
 /***/ }),
 /* 23 */

@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/my/my",
-    "pages/details/details",
-    "pages/strategy/strategy",
     "pages/index/index",
+    "pages/strategy/strategy",
+    "pages/details/details",
+    "pages/my/my",
     "pages/city/city",
+    "pages/search/search",
     "pages/publish/publish"
   ],
   "subPackages": [],
@@ -41,7 +42,7 @@
     ]
   },
   "usingComponents": {
-    "load-list": "/element/loading"
-  },
-  "sitemapLocation": "sitemap67.json"
+    "load-list": "/element/loading",
+    "none-data": "/element/none"
+  }
 }

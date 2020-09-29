@@ -1,7 +1,7 @@
 
 .myhome.data-v-34ed30df{
-	background: -webkit-linear-gradient(bottom,#ffe566 10% #ffd300 100%);
-	background: linear-gradient(to top,#ffe566 10% #ffd300 100%);
+	background: -webkit-linear-gradient(bottom,#ffe566 10% ,#ffd300 100%);
+	background: linear-gradient(to top,#ffe566 10% ,#ffd300 100%);
 	height:350rpx;
 	display:-webkit-box;
 	display:-webkit-flex;

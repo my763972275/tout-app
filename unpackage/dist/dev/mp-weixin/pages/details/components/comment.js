@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var HMmessages = function HMmessages() {__webpack_require__.e(/*! require.ensure | element/HM-messages/HM-messages */ "element/HM-messages/HM-messages").then((function () {return resolve(__webpack_require__(/*! @/element/HM-messages/HM-messages.vue */ 163));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | element/modal */ "element/modal").then((function () {return resolve(__webpack_require__(/*! ../../../element/modal.vue */ 170));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 66));
 
 
 
@@ -190,59 +190,151 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+var _cloudFun = __webpack_require__(/*! ../../../commons/js/cloudFun.js */ 31);
+var _common = __webpack_require__(/*! ../../../commons/js/common.js */ 69);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var HMmessages = function HMmessages() {__webpack_require__.e(/*! require.ensure | element/HM-messages/HM-messages */ "element/HM-messages/HM-messages").then((function () {return resolve(__webpack_require__(/*! @/element/HM-messages/HM-messages.vue */ 163));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | element/modal */ "element/modal").then((function () {return resolve(__webpack_require__(/*! ../../../element/modal.vue */ 170));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: {
     HMmessages: HMmessages,
     Modal: Modal },
 
-  props: {},
+  props: {
+    commentid: String,
+    leaveword: Array,
+    messageword: Array },
 
+  watch: {
+    messageword: function messageword(newvalue, oldvalue) {
+      this.newmessage = ['全部'].concat(_toConsumableArray(newvalue));
+      // this.num = 0;
+    } },
 
   data: function data() {
     return {
       num: 0,
-      newmessage: ["全部", "服务不好"],
+      name: '全部',
       box: false,
       comment: '',
-      leaveword: [
-      {
-        avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132",
-        nickName: 'Vicky',
-        time: '2020-9-5 9:49:0',
-        usermess: '真好玩！' },
-
-      {
-        avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132",
-        nickName: 'Vicky',
-        time: '2020-9-5 9:49:0',
-        usermess: '玩起来雕塑爱好读完浅黄色的u爱护动物前后赌气的话！' },
-
-      {
-        avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/3LKDIliaay8SsfWfzTQA2d9B3JqCv3LRyU3lG5iaXbV9MIISSJEpEQVSnUvPUdpVbwCosGapJPavXgBcdmHFtSZw/132",
-        nickName: 'Vicky',
-        time: '2020-9-5 9:49:0',
-        usermess: '苏地区和度恒温i去大户漆黑的u契合度其后对其厚度武器和对其会对我去的确很大！' }] };
-
-
+      avatarUrl: '',
+      nickName: '',
+      openid: '',
+      flag: false,
+      newmessage: [] };
 
   },
   methods: {
-    menubtn: function menubtn(index) {
-      this.num = index;
+    getCommentList: function getCommentList() {var _this = this;
+      (0, _cloudFun.selectData)({ id: this.commentid }, 'comment').
+      then(function (res) {
+        _this.leaveword = res;
+      }).
+      catch(function (err) {
+        console.log(err);
+      });
     },
-    popup: function popup() {
-      this.box = true;
+    aiMessage: function aiMessage() {var _this2 = this;
+      return new Promise(function (resolve, reject) {
+        wx.cloud.callFunction({
+          name: 'aimessage',
+          data: {
+            message: _this2.comment } }).
+
+
+        then(function (res) {
+          var aidata = res.result.aimessage.items;
+          resolve(aidata);
+        }).
+        catch(function (err) {
+          reject(err);
+        });
+      });
+    },
+    menubtn: function menubtn(index, name) {
+      this.num = index;
+      this.name = name;
+      this.$parent.fatherMethod(this.commentid, this.name);
+    },
+    // 显示评论框
+    popup: function popup() {var _this3 = this;
+      // 评论之前先判断用户是否登录
+      (0, _cloudFun.home)('user').
+      then(function (res) {
+        // 用户没有登录
+        if (res.length == 0) {
+          var message = '请登陆后再操作';
+          // dom更新循环结束之后的延迟回调
+          _this3.$nextTick(function () {
+            _this3.$refs.modal.init(message);
+          });
+        } else {
+          _this3.avatarUrl = res[0].avatarUrl;
+          _this3.nickName = res[0].nickName;
+          _this3.openid = res[0]._openid;
+          _this3.box = true;
+        }
+      }).
+      catch(function (err) {
+        console.log(err);
+      });
+
     },
     cancel: function cancel() {
       this.box = false;
+      this.comment = '';
     },
-    submit: function submit() {
-      if (this.comment == '') {
-        this.HMmessages.show('请填写评论', { icon: 'error', iconColor: 'white', fontColor: 'white', background: "rgba(255,0,51,0.8)" });
-      } else {
-        this.box = false;
-      }
+    submit: function submit() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var stamess, ali, _ref, prop, adj, classif;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+                _this4.comment == '')) {_context.next = 4;break;}
+                _this4.HMmessages.show('请填写评论', { icon: 'error', iconColor: 'white', fontColor: 'white', background: "rgba(255,0,51,0.8)" });_context.next = 18;break;case 4:_context.next = 6;return (
+
+                  _this4.aiMessage());case 6:stamess = _context.sent;
+                console.log(stamess);if (!(
+                stamess.length == 0)) {_context.next = 13;break;}_context.next = 11;return (
+
+                  _this4.messdata(''));case 11:_context.next = 18;break;case 13:
+
+                // 百度返回标签不为空
+                ali = stamess[stamess.length - 1];_ref =
+                [ali.prop, ali.adj], prop = _ref[0], adj = _ref[1];
+                classif = prop + adj;
+                // 提交到数据库
+                _context.next = 18;return _this4.messdata(classif);case 18:case "end":return _context.stop();}}}, _callee);}))();
+
+
+    },
+    // 把所有数据提交到数据库
+    messdata: function messdata(classif) {var _this5 = this;
+      uni.showLoading({
+        title: '上传中...' });
+
+      return new Promise(function (resolve, reject) {
+        var commentdata = {
+          id: _this5.commentid,
+          avatarUrl: _this5.avatarUrl,
+          nickName: _this5.nickName,
+          openid: _this5.openid,
+          comment: _this5.comment,
+          classify: classif,
+          time: (0, _common.timer)() };
+
+        (0, _cloudFun.addDatabase)(commentdata, 'comment').
+        then(function (res) {
+          _this5.box = false;
+          _this5.flag = true;
+          uni.hideLoading();
+          _this5.HMmessages.show('评论成功', { icon: 'success', iconColor: 'black', fontColor: 'black', background: "rgba(0,255,0,0.8)" });
+          // 清空输入框
+          _this5.comment = '';
+          // 留言成功，刷新留言数据，用户实时看到，执行父组件的方法
+          // 子组件调用父组件的方法
+          _this5.$parent.fatherMethod(_this5.commentid, _this5.name);
+
+          resolve(res);
+        }).
+        catch(function (err) {
+          reject(err);
+        });
+      });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

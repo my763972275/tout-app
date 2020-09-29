@@ -147,13 +147,12 @@ var _default =
   data: function data() {
     return {};
 
-
   },
   methods: {
     // 点击跳转到当前标题的详细页面
     localCont: function localCont(id) {
       uni.navigateTo({
-        url: '../../details/details?id=' + id });
+        url: '../details/details?id=' + id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

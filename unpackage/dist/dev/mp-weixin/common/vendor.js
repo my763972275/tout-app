@@ -8826,6 +8826,7 @@ exports.home = home;var homelist = function homelist(listdata, pageid) {
 exports.homelist = homelist;var selectData = function selectData(keywords, coll) {
   return new Promise(function (resolve, reject) {
     var collData = db.collection(coll).where(keywords).
+    orderBy('time', 'asc').
     get().
     then(function (res) {
       resolve(res.data);
@@ -11807,7 +11808,7 @@ exports.previewImg = previewImg;var timer = function timer() {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationBarTitleText": "详情页" }, "pages/strategy/strategy": { "navigationBarTitleText": "攻略" }, "pages/index/index": { "navigationBarTitleText": "飞猪旅游" }, "pages/city/city": { "navigationBarTitleText": "选择城市" }, "pages/publish/publish": { "navigationBarTitleText": "发表游记" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "飞猪旅游", "navigationBarBackgroundColor": "#ffd300", "backgroundColor": "#ffd300" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/details/details": { "navigationBarTitleText": "详情页", "usingComponents": { "navs": "/pages/details/components/navs", "swiper": "/components/swiper", "matter": "/pages/details/components/matter", "comment": "/pages/details/components/comment" }, "usingAutoImportComponents": {} }, "pages/strategy/strategy": { "navigationBarTitleText": "攻略", "usingComponents": { "address": "/pages/strategy/components/address", "content": "/pages/strategy/components/content", "location": "/pages/strategy/components/location" }, "usingAutoImportComponents": {} }, "pages/index/index": { "navigationBarTitleText": "飞猪旅游", "usingComponents": { "search": "/components/search", "swiper": "/components/swiper", "menu": "/components/menu", "classify": "/components/classify", "scroll-view": "/components/scrollView", "content-menu": "/components/content" }, "usingAutoImportComponents": {} }, "pages/city/city": { "navigationBarTitleText": "选择城市", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/publish/publish": { "navigationBarTitleText": "发表游记", "usingComponents": { "h-mmessages": "/element/HM-messages/HM-messages", "modal": "/element/modal" }, "usingAutoImportComponents": {} }, "pages/search/search": { "navigationBarTitleText": "搜索" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "飞猪旅游", "navigationBarBackgroundColor": "#ffd300", "backgroundColor": "#ffd300" } };exports.default = _default;
 
 /***/ }),
 

@@ -1,7 +1,12 @@
 <template>
 	<view class="search-cont">
+<<<<<<< HEAD
 		<view class="searchCode" @click="scanCode"><image src="../static/scan.png" mode="widthFix"></image></view>
 		<view class="search">
+=======
+		<view class="searchCode"><image src="../static/scan.png" mode="widthFix"></image></view>
+		<view class="search" @click="navTo">
+>>>>>>> 2b2119c6e5606a8cb6ba52fab633b696fd4adbdf
 			<image src="../static/search.png" mode="widthFix" class="search-img"></image>
 			<input type="text" placeholder="请输入关键字" disabled />
 		</view>
@@ -16,12 +21,18 @@ export default {
 		return {};
 	},
 	methods:{
+<<<<<<< HEAD
 		scanCode(){
 			uni.scanCode({
 				onlyFromCamera:true,
 				success:function(res){
 					console.log(res)
 				}
+=======
+		navTo(){
+			uni.navigateTo({
+				url:"../search/search"
+>>>>>>> 2b2119c6e5606a8cb6ba52fab633b696fd4adbdf
 			})
 		}
 	}

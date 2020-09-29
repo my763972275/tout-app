@@ -10,7 +10,4 @@ page{
 	background:#ffd00c;
 	z-index:2;
 }
-Swiper{
-	height:620rpx;
-}
 

@@ -137,23 +137,23 @@ var _default =
       isFixed: false,
       menuList: [
       {
-        "image": '../static/plane.webp',
+        "image": '../static/plane.jpg',
         "name": '机票' },
 
       {
-        "image": '../static/hotel.webp',
+        "image": '../static/hotel.jpg',
         "name": '酒店' },
 
       {
-        "image": '../static/train.webp',
+        "image": '../static/train.jpg',
         "name": '火车票' },
 
       {
-        "image": '../static/bus.webp',
+        "image": '../static/bus.jpg',
         "name": '汽车票' },
 
       {
-        "image": '../static/ticket.webp',
+        "image": '../static/ticket.jpg',
         "name": '门票' }] };
 
 

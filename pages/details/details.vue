@@ -3,9 +3,19 @@
 		<view class="scroll-flex" v-show="isshow"  :style="{opacity:styleOpacity}">
 			<Navs ref="nav"></Navs>
 		</view>
-		<Swiper :banner = "banners" :nav = "'details'" :title ="title"></Swiper>
-		<Matter :imgArr = "banners" :video = "videos"></Matter>
-		<Comment></Comment>
+		<Swiper :banner = "banners" :nav = "'details'" :title ="title" :leaveword="leaveword" style="height:600upx;"></Swiper>
+		<!-- 详情组件 -->
+		<view class="matter-page">
+			<Matter :imgArr = "banners" :video = "videos"></Matter>
+		</view>
+		<!-- 留言组件 -->
+		<view class="message-page">
+			<Comment :commentid = "commentid" :leaveword="leaveword" :messageword="messageword"></Comment>
+		</view>
+		<!-- 留言为空的提示 -->
+		<view style="margin-bottom: 90upx;" v-if="leaveword.length == 0">
+			<none-data></none-data>
+		</view>
 	</view>
 </template>
 
@@ -14,7 +24,7 @@
 	import Swiper from '../../components/swiper.vue';
 	import Matter from './components/matter.vue';
 	import Comment from './components/comment.vue';
-	import {selectData} from '../../commons/js/cloudFun.js';
+	import {selectData,home} from '../../commons/js/cloudFun.js';
 	export default{
 		components:{
 			Navs,
@@ -35,22 +45,45 @@
 		},
 		data(){
 			return {
+				commentid:'',
 				isshow:false,
 				styleOpacity:'',
 				banners:[],
+				leaveword:[],
+				messageword:[],
 				title:'',
 				videos:'',
 				msgList:{}
 			}
 		},
 		onLoad(e){
+			this.commentid = e.id
 			this.getUserDetails(e.id)
+			this.getCommentList({id:e.id})
 		},
 		methods:{
-			getUserDetails(id){
-				selectData({_id:'60173c665f519d0c00d700cc5582f6c5'},'publish')
+			// 获取用户评论
+			getCommentList(keywords){
+				selectData(keywords,'comment')
 				.then(res => {
-					console.log(res)
+					this.leaveword = res;
+					let word = res.map(item => {
+						return item.classify
+					})
+					// 数组去重
+					let newarr = Array.from(new Set(word))
+					// 数组去空
+					let newarrdata = newarr.filter(item => item)
+					this.messageword = newarrdata;
+				})
+				.catch(err => {
+					console.log(err)
+				})
+			},
+			// 获取详细信息
+			getUserDetails(id){
+				selectData({_id:id},'publish')
+				.then(res => {
 					this.banners = res[0].album;
 					this.title = res[0].title;
 					this.videos = res[0].video;
@@ -63,6 +96,33 @@
 				})
 				.catch(err => {
 					console.log(err)
+				})
+			},
+			// 子组件执行父组件方法，请求留言数据
+			fatherMethod(item,name){
+				if(name == '全部'){
+					this.getCommentList({id:item})
+				}else{
+					this.getCommentList({id:item,classify:name})
+				}
+				
+			},
+			// 锚点链接跳转
+			fatherTab(index){
+				var anchor ;
+				if(index == 1){
+					anchor = '.matter-page'
+				}else{
+					anchor = '.message-page'
+				}
+				const query = this.createSelectorQuery();
+				query.select(anchor).boundingClientRect();
+				query.selectViewport().scrollOffset();
+				query.exec((res) => {
+					wx.pageScrollTo({
+						scrollTop:res[0].top + res[1].scrollTop - 50,
+						duration:300
+					})
 				})
 			}
 		}
@@ -80,8 +140,5 @@
 		right:0;
 		background:#ffd00c;
 		z-index:2;
-	}
-	Swiper{
-		height:620upx;
 	}
 </style>

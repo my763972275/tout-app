@@ -147,7 +147,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _cloudFun = __webpack_require__(/*! ../../commons/js/cloudFun.js */ 31);var Navs = function Navs() {__webpack_require__.e(/*! require.ensure | pages/details/components/navs */ "pages/details/components/navs").then((function () {return resolve(__webpack_require__(/*! ./components/navs.vue */ 79));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Swiper = function Swiper() {Promise.all(/*! require.ensure | components/swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/swiper")]).then((function () {return resolve(__webpack_require__(/*! ../../components/swiper.vue */ 86));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Matter = function Matter() {__webpack_require__.e(/*! require.ensure | pages/details/components/matter */ "pages/details/components/matter").then((function () {return resolve(__webpack_require__(/*! ./components/matter.vue */ 93));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | pages/details/components/comment */ "pages/details/components/comment").then((function () {return resolve(__webpack_require__(/*! ./components/comment.vue */ 100));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+var _cloudFun = __webpack_require__(/*! ../../commons/js/cloudFun.js */ 31);var Navs = function Navs() {__webpack_require__.e(/*! require.ensure | pages/details/components/navs */ "pages/details/components/navs").then((function () {return resolve(__webpack_require__(/*! ./components/navs.vue */ 79));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Swiper = function Swiper() {Promise.all(/*! require.ensure | components/swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/swiper")]).then((function () {return resolve(__webpack_require__(/*! ../../components/swiper.vue */ 86));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Matter = function Matter() {__webpack_require__.e(/*! require.ensure | pages/details/components/matter */ "pages/details/components/matter").then((function () {return resolve(__webpack_require__(/*! ./components/matter.vue */ 93));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {Promise.all(/*! require.ensure | pages/details/components/comment */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/details/components/comment")]).then((function () {return resolve(__webpack_require__(/*! ./components/comment.vue */ 100));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: {
     Navs: Navs,
@@ -168,26 +178,49 @@ var _cloudFun = __webpack_require__(/*! ../../commons/js/cloudFun.js */ 31);var 
   },
   data: function data() {
     return {
+      commentid: '',
       isshow: false,
       styleOpacity: '',
       banners: [],
+      leaveword: [],
+      messageword: [],
       title: '',
       videos: '',
       msgList: {} };
 
   },
   onLoad: function onLoad(e) {
+    this.commentid = e.id;
     this.getUserDetails(e.id);
+    this.getCommentList({ id: e.id });
   },
   methods: {
-    getUserDetails: function getUserDetails(id) {var _this = this;
-      (0, _cloudFun.selectData)({ _id: '60173c665f519d0c00d700cc5582f6c5' }, 'publish').
+    // 获取用户评论
+    getCommentList: function getCommentList(keywords) {var _this = this;
+      (0, _cloudFun.selectData)(keywords, 'comment').
       then(function (res) {
-        console.log(res);
-        _this.banners = res[0].album;
-        _this.title = res[0].title;
-        _this.videos = res[0].video;
-        _this.msgList = {
+        _this.leaveword = res;
+        var word = res.map(function (item) {
+          return item.classify;
+        });
+        // 数组去重
+        var newarr = Array.from(new Set(word));
+        // 数组去空
+        var newarrdata = newarr.filter(function (item) {return item;});
+        _this.messageword = newarrdata;
+      }).
+      catch(function (err) {
+        console.log(err);
+      });
+    },
+    // 获取详细信息
+    getUserDetails: function getUserDetails(id) {var _this2 = this;
+      (0, _cloudFun.selectData)({ _id: id }, 'publish').
+      then(function (res) {
+        _this2.banners = res[0].album;
+        _this2.title = res[0].title;
+        _this2.videos = res[0].video;
+        _this2.msgList = {
           avatarUrl: res[0].avatarUrl,
           nickName: res[0].avatarUrl,
           openid: res[0]._openid,
@@ -196,6 +229,33 @@ var _cloudFun = __webpack_require__(/*! ../../commons/js/cloudFun.js */ 31);var 
       }).
       catch(function (err) {
         console.log(err);
+      });
+    },
+    // 子组件执行父组件方法，请求留言数据
+    fatherMethod: function fatherMethod(item, name) {
+      if (name == '全部') {
+        this.getCommentList({ id: item });
+      } else {
+        this.getCommentList({ id: item, classify: name });
+      }
+
+    },
+    // 锚点链接跳转
+    fatherTab: function fatherTab(index) {
+      var anchor;
+      if (index == 1) {
+        anchor = '.matter-page';
+      } else {
+        anchor = '.message-page';
+      }
+      var query = this.createSelectorQuery();
+      query.select(anchor).boundingClientRect();
+      query.selectViewport().scrollOffset();
+      query.exec(function (res) {
+        wx.pageScrollTo({
+          scrollTop: res[0].top + res[1].scrollTop - 50,
+          duration: 300 });
+
       });
     } } };exports.default = _default;
 

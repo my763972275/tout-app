@@ -79,9 +79,6 @@
 			}
 		},
 		methods:{
-			// tabSelect(name){
-			// 	console.log(name)
-			// },
 			address(){
 				locationData()
 				.then(res => {
@@ -93,13 +90,11 @@
 					console.log(err)
 					this.addressVal = '无锡市'
 				})
-				// this.$store.commit('citymuta',this.addressVal)
 			},
 			// 定位成功，查询数据库，取出该城市下的数据
 			cityData(objdata,collection){
 				selectData(objdata,collection)
 				.then(res => {
-					console.log(res)
 					this.publishData = res;
 				})
 				.catch(err => {
